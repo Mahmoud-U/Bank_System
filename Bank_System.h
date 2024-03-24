@@ -7,16 +7,14 @@ using namespace std;
 class Bank_System
 {
 };
-class Person 
-{
+class Person {
 protected:
-	//Attributes:
 	int id;
 	string name;
 	string password;
 public:
-	//Constructors:
-	Person() {
+	Person() 
+	{
 		id = 0;
 	}
 	Person(int id, string name, string password) {
@@ -30,8 +28,7 @@ public:
 			}
 		}
 	}
-
-	//Setters:
+	//setters
 	void setId(int id) {
 		this->id = id;
 	}
@@ -41,8 +38,6 @@ public:
 	void setPassword(string password) {
 		this->password = password;
 	}
-
-	//Getters:
 	int getId() {
 		return this->id;
 	}
@@ -52,12 +47,9 @@ public:
 	string getPassword() {
 		return this->password;
 	}
-
-	//Methods:
 	/*virtual Person display() = 0;*/
 };
-class Client : public Person 
-{
+class Client : public Person {
 private:
 	double balance;
 public:
@@ -68,16 +60,39 @@ public:
 		this->balance = balance;
 
 	}
-
 	void setBalance(double balance) {
 		this->balance = balance;
 	}
-
 	double getBalance() {
 		return balance;
 	}
+	//deposite
+	double deposite(double amount) {
+		balance += amount;
+		return balance;
+	}
+	//withdraw
+	double withdraw(double amount) {
+		if (amount <= balance)
+			balance -= amount;
+		else
+			cout << "Amount Exceeds" << endl;
+		return balance;
+	}
 
-	/*Person* display() {
+	//TransferTo
+	double transferTo(double amount, Client& x) 
+	{
+		if (amount <= balance) {
+			balance -= balance;
+			x.deposite(amount);
+		}
+		else
+			cout << "Amount Exceed" << endl;
+	}
+
+
+	Person* display() {
 		return this;
-	};*/
+	};
 };
