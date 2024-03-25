@@ -28,8 +28,6 @@ public:
 	Person(int id, string name, string password,double balance) 
 	{
 		this->id = id;
-		this->password = password;
-		this->balance = balance;
 
 		//Name Valid
 		if (Valid_Name(name))
@@ -48,6 +46,7 @@ public:
 		{
 			balance = 1500;
 		}
+		this->balance = balance;
 	}
 
 	//Name & Password Validation
@@ -110,10 +109,10 @@ public:
 
 	virtual void Display()
 	{
-		std::cout << "Person Details : " << endl;
-		std::cout << "ID : " << id << endl;
-		std::cout << "Name : " << name << endl;
-		std::cout << "Balance : " << balance << endl;
+		cout << "Person Details : " << endl;
+		cout << "ID : " << id << endl;
+		cout << "Name : " << name << endl;
+		cout << "Balance : " << balance << endl;
 	}
 
 	~Person()
@@ -124,20 +123,10 @@ public:
 
 class Client : public Person 
 {
-private:
-	//Attributes
-	double balance;
 public:
-	//Constructors
-	Client() 
-	{
-		balance = 0.0;
-	}
+	Client() {}
 	Client(int id, string name, string password, double balance)
-		:Person(id, name, password, balance)
-	{
-		this->balance = balance;
-	}
+		:Person(id, name, password, balance) {}
 
 	//Deposite
 	void Deposit(double amount) 
@@ -185,7 +174,7 @@ public:
 	//Check Balance
 	void Check_Balance() 
 	{
-		cout << "Current balance: " << balance << std::endl;
+		cout << "Current balance : " << balance << endl;
 	}
 
 	void Display() 
@@ -205,7 +194,7 @@ public:
 
 class Employee : public Person
 {
-private:
+protected:
 	//Attributes
 	double Salary;
 public:
@@ -217,12 +206,11 @@ public:
 	Employee(int id, string name, string password, double balance, double Salary)
 		:Person(id, name, password, balance)
 	{
-		this->Salary = Salary;
-
 		if (Salary < 5000)
 		{
 			Salary = 5000;
 		}
+		this->Salary = Salary;
 	}
 
 	//Setters
@@ -253,45 +241,17 @@ public:
 	}
 };
 
-class Admin : public Person
+class Admin : public Employee
 {
-private:
-	//Attributes
-	double Salary;
 public:
 	//Constructors
-	Admin()
-	{
-		Salary = 0.0;
-	}
+	Admin() {}
 	Admin(int id, string name, string password, double balance, double Salary)
-		:Person(id, name, password, balance)
-	{
-		this->Salary = Salary;
-
-		if (Salary < 5000)
-		{
-			Salary = 5000;
-		}
-	}
-
-	//Setters
-	void setSalary(double Salary)
-	{
-		if (Salary >= 5000)
-			this->Salary = Salary;
-	}
-
-	//Getters
-	double getSalary()
-	{
-		return this->Salary = Salary;
-	}
+		:Employee(id, name, password, balance, Salary) {}
 
 	void Display()
 	{
-		Person::Display();
-		cout << "Salary : " << Salary << endl;
+		Employee::Display();
 	}
 
 	/*Person* display() {

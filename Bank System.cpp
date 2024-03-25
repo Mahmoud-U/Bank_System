@@ -27,15 +27,15 @@ int main()
 	C2.Check_Balance();
 	cout << "\n===================================\n";
 
-	Client C3(3, "Ronaldo", "Maghawry123", 50000);
+	Client C3(3, "Ronaldo", "Maghawry123", 60000);
 	C3.Display();
 	cout << "\n===================================\n";
 
-	Employee E1(4, "Spiderman", "Spider12345", 200, 9000);
+	Employee E1(4, "Spiderman", "Spider12345", 300, 1200);
 	E1.Display();
 	cout << "\n===================================\n";
 
-	Admin A1(6, "Ironman", "Iron12345", 600, 8000);
+	Admin A1(5, "Ironman", "Iron12345", 30000, 8000);
 	A1.Display();
 
 	return 0;
