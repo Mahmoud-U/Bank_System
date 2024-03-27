@@ -66,7 +66,6 @@ void clearScreen()
 void showMenu() 
 {
     int choice;
-
     do {
         void clearScreen();         // Clear the screen before displaying the menu
         cout << "\nChoose an option:" << endl;
