@@ -13,13 +13,13 @@ class Bank_System
 class Person 
 {
 protected:
-	//Attributes
+	// Attributes
 	int id;
 	string name;
 	string password;
 	double balance;
 public:
-	//Constructors
+	// Constructors
 	Person()
 	{
 		id = 0;
@@ -57,6 +57,7 @@ public:
 	}
 
 	// Setters
+	// ID Validation
 	void setId(int id) {
 		string idStr = to_string(id);
 
@@ -76,6 +77,7 @@ public:
 		this->id = idValue;
 	}
 
+	// Name Validation
 	void setName(string name)
 	{
 		if (regex_search(name, regex("\\s"))) {
@@ -119,6 +121,7 @@ public:
 		this->password = password;
 	}
 
+	// Balance Validation
 	void setBalance(double balance) 
 	{
 		if (balance < 1500) {
@@ -128,7 +131,7 @@ public:
 		this->balance = balance;
 	}
 
-	//Getters
+	// Getters
 	int getId() 
 	{
 		return this->id;
@@ -168,7 +171,7 @@ public:
 	Client(int id, string name, string password, double balance)
 		:Person(id, name, password, balance) {}
 
-	//Deposite
+	// Deposite
 	void Deposit(double amount) 
 	{
 		if (amount > 0) 
@@ -182,7 +185,7 @@ public:
 		}
 	}
 
-	//Withdraw
+	// Withdraw
 	void Withdraw(double amount) 
 	{
 		if (amount > 0 && balance - amount >= 1500) 
@@ -196,7 +199,7 @@ public:
 		}
 	}
 
-	//TransferTo
+	// TransferTo
 	void Transfer_To(double amount, Client& recipient) 
 	{
 		if (amount > 0 && balance - amount >= 1500) 
@@ -211,7 +214,7 @@ public:
 		}
 	}
 
-	//Check Balance
+	// Check Balance
 	void Check_Balance() 
 	{
 		cout << "Current balance : " << balance << endl;
@@ -235,10 +238,8 @@ public:
 class Employee : public Person
 {
 protected:
-	//Attributes
 	double salary;
 public:
-	//Constructors
 	Employee() 
 	{
 		salary = 0.0;
@@ -254,7 +255,7 @@ public:
 		}
 	}
 
-	//Setters
+	// Salary Validation
 	void setSalary(double salary)
 	{
 		if (salary < 5000) {
@@ -264,7 +265,6 @@ public:
 		this->salary = salary;
 	}
 
-	//Getters
 	double getSalary()
 	{
 		return this->salary = salary;
@@ -288,7 +288,6 @@ public:
 class Admin : public Employee
 {
 public:
-	//Constructors
 	Admin() {}
 	Admin(int id, string name, string password, double balance, double Salary)
 		:Employee(id, name, password, balance, Salary) {}
