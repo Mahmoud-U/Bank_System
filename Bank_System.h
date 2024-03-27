@@ -25,68 +25,107 @@ public:
 		id = 0;
 		balance = 0.0;
 	}
-	Person(int id, string name, string password,double balance) 
-	{
-		this->id = id;
+	Person(int id, string name, string password, double balance) {
 
-		//Name Valid
-		if (Valid_Name(name))
-			this->name = name;
-		else
-			cout << "Invalid name format. Name must have a length between 5 and 20." << endl;
-
-		//Pass Valid
-		if (Valid_Password(password))
-			this->password = password;
-		else
-			cout << "Invalid password format. Password must have a length between 8 and 20" << endl;
-
-		//Balance Valid
-		if (balance < 1500)
-		{
-			balance = 1500;
+		try {
+			setId(id);
 		}
-		this->balance = balance;
+		catch (const exception& e) {
+			cerr << e.what() << endl;
+		}
+
+		try {
+			setName(name);
+		}
+		catch (const exception& e) {
+			cerr << e.what() << endl;
+		}
+
+		try {
+			setPassword(password);
+		}
+		catch (const exception& e) {
+			cerr << e.what() << endl;
+		}
+		
+		try {
+			setBalance(balance);
+		}
+		catch (const exception& e) {
+			cerr << e.what() << endl;
+		}
 	}
 
-	//Name & Password Validation
-	static bool Valid_Name(string name)
-	{
-		regex pattern("^[A-Z][a-z]{5,20}$");
+	// Setters
+	void setId(int id) {
+		string idStr = to_string(id);
 
-		return regex_match(name, pattern);
+		if (idStr.empty()) {
+			throw invalid_argument("Invalid ID format. ID cannot be empty.");
+		}
+
+		if (idStr.find_first_not_of("0123456789") != string::npos) {
+			throw invalid_argument("Invalid ID format. ID should contain only numbers.");
+		}
+
+		int idValue = stoi(idStr);
+		if (idValue < 1 || idValue > 1000) {
+			throw out_of_range("Invalid ID range. ID should be between 1 and 1000.");
+		}
+
+		this->id = idValue;
 	}
 
-	static bool Valid_Password(string password)
-	{
-		regex pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z0-9]{8,20}$");
-
-		return regex_match(password, pattern);
-	}
-	
-	//setters:
-	void setId(int id) 
-	{
-		this->id = id;
-	}
 	void setName(string name)
 	{
-		if (Valid_Name(name))
-			this->name = name;
-		else
-			cout << "Invalid name format. Name must have a length between 5 and 20." << endl;
+		if (regex_search(name, regex("\\s"))) {
+			throw invalid_argument("Invalid name format. Name cannot contain spaces.");
+		}
+		if (name.empty()) {
+			throw runtime_error("Invalid name format. Name cannot be empty.");
+		}
+		if (regex_search(name, regex("\\d"))) {
+			throw invalid_argument("Invalid name format. Name cannot contain numbers.");
+		}
+		if (!regex_match(name, regex("^[A-Z][a-z]{4,19}$"))) {
+			throw invalid_argument("Invalid name format. Name must start with an uppercase letter, followed by 4 to 19 lowercase letters.");
+		}
+
+		this->name = name;
 	}
-	void setPassword(string password)
+
+	// Password Validation
+	void setPassword(string password) 
 	{
-		if (Valid_Password(password))
-			this->password = password;
-		else
-			cout << "Invalid password format. Password must have a length between 8 and 20" << endl;
+		if (password.find(' ') != string::npos) {
+			throw runtime_error("Invalid password format. Password cannot contain spaces.");
+		}
+		if (password.empty()) {
+			throw runtime_error("Invalid password format. Password cannot be empty.");
+		}
+		if (!regex_match(password, regex(".*\\d.*"))) {
+			throw runtime_error("Invalid password format. Password must contain at least one digit.");
+		}
+		if (!regex_match(password, regex(".*[a-z].*"))) {
+			throw runtime_error("Invalid password format. Password must contain at least one lowercase letter.");
+		}
+		if (!regex_match(password, regex(".*[A-Z].*"))) {
+			throw runtime_error("Invalid password format. Password must contain at least one uppercase letter.");
+		}
+		if (password.size() < 8 || password.size() > 20) {
+			throw runtime_error("Invalid password format. Password must be 8 to 20 characters long.");
+		}
+
+		this->password = password;
 	}
-	void setBalance(double balance)
+
+	void setBalance(double balance) 
 	{
-		if (balance >= 1500)
-			this->balance = balance;
+		if (balance < 1500) {
+			throw runtime_error("Minimum balance requirement not met. Balance should be at least 1500.");
+		}
+
+		this->balance = balance;
 	}
 
 	//Getters
@@ -112,6 +151,7 @@ public:
 		cout << "Person Details : " << endl;
 		cout << "ID : " << id << endl;
 		cout << "Name : " << name << endl;
+		cout << "Password : " << password << endl;
 		cout << "Balance : " << balance << endl;
 	}
 
@@ -196,40 +236,44 @@ class Employee : public Person
 {
 protected:
 	//Attributes
-	double Salary;
+	double salary;
 public:
 	//Constructors
 	Employee() 
 	{
-		Salary = 0.0;
+		salary = 0.0;
 	}
-	Employee(int id, string name, string password, double balance, double Salary)
+	Employee(int id, string name, string password, double balance, double salary)
 		:Person(id, name, password, balance)
 	{
-		if (Salary < 5000)
-		{
-			Salary = 5000;
+		try {
+			setSalary(salary);
 		}
-		this->Salary = Salary;
+		catch (const exception& e) {
+			cerr << e.what() << endl;
+		}
 	}
 
 	//Setters
-	void setSalary(double Salary)
+	void setSalary(double salary)
 	{
-		if (Salary >= 5000)
-			this->Salary = Salary;
+		if (salary < 5000) {
+			throw runtime_error("Minimum salary requirement not met. Salary should be at least 5000.");
+		}
+
+		this->salary = salary;
 	}
 
 	//Getters
 	double getSalary()
 	{
-		return this->Salary = Salary;
+		return this->salary = salary;
 	}
 	
 	void Display()
 	{
 		Person::Display();
-		cout << "Salary : " << Salary << endl;
+		cout << "Salary : " << salary << endl;
 	}
 	/*Person* display() {
 		return this;
