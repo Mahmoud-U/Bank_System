@@ -12,40 +12,40 @@ void showMenu();
 
 int main()
 {
-	/*showMenu();*/
+	showMenu();
 
-	////Test 1
-	//Client C1(1, "Batman", "Baaat1234", 4000);
-	//C1.Display();
-	//cout << endl;
+	//Test 1
+	/*Client C1(1, "Batman", "Baaat1234", 4000);
+	C1.Display();
+	cout << endl;
 
-	//C1.Deposit(1800);
-	//C1.Withdraw(2700);
-	//cout << endl;
+	C1.Deposit(1800);
+	C1.Withdraw(2700);
+	cout << endl;
 
-	//Client C2(2, "Superman", "Baaat1234", 7000);
-	//C2.Display();
-	//cout << endl;
-	//C1.Transfer_To(900, C2);
-	//cout << endl;
+	Client C2(2, "Superman", "Uranium985", 7000);
+	C2.Display();
+	cout << endl;
+	C1.Transfer_To(900, C2);
+	cout << endl;
 
-	//cout << "Client 1 ";
-	//C1.Check_Balance();
+	cout << "Client 1 ";
+	C1.Check_Balance();
 
-	//cout << "Client 2 ";
-	//C2.Check_Balance();
-	//cout << "\n===================================\n";
+	cout << "Client 2 ";
+	C2.Check_Balance();
+	cout << "\n===================================\n";
 
-	//Client C3(3, "Ronaldo", "Maghawry123", 60000);
-	//C3.Display();
-	//cout << "\n===================================\n";
+	Client C3(3, "Ronaldo", "Maghawry123", 60000);
+	C3.Display();
+	cout << "\n===================================\n";
 
-	//Employee E1(4, "Spiderman", "Spider12345", 300, 1200);
-	//E1.Display();
-	
+	Employee E1(4, "Spiderman", "Spider12345*$@#", 30000, 12000);
+	E1.Display(); 
+	cout << "\n===================================\n";
 
-	//Admin A1(5, "Ironman", "Iron12345", 30000, 8000);
-	//A1.Display();
+	Admin A1(5, "Ironman", "Iron12345", 30000, 8000);
+	A1.Display();*/
 
 
 	//Test2

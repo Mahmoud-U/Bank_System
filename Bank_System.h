@@ -6,10 +6,6 @@
 #include <regex>
 #include <exception>
 using namespace std;
-class Bank_System
-{
-
-};
 
 class Person 
 {
@@ -58,6 +54,7 @@ public:
 	}
 
 	// Setters
+ 
 	// ID Validation
 	void setId(int id) {
 		string idStr = to_string(id);
@@ -78,7 +75,7 @@ public:
 		this->id = idValue;
 	}
 
-	// Name Validation
+	// Name Validation using regular expressions
 	void setName(string name)
 	{
 		if (regex_search(name, regex("\\s"))) {
@@ -90,8 +87,8 @@ public:
 		if (regex_search(name, regex("\\d"))) {
 			throw invalid_argument("Invalid name format. Name cannot contain numbers.");
 		}
-		if (!regex_match(name, regex("^[A-Z][a-z]{4,19}$"))) {
-			throw invalid_argument("Invalid name format. Name must start with an uppercase letter, followed by 4 to 19 lowercase letters.");
+		if (!regex_match(name, regex("^[A-Z][a-z]{2,19}$"))) {
+			throw invalid_argument("Invalid name format. Name must start with an uppercase letter, followed by 2 to 19 lowercase letters.");
 		}
 
 		this->name = name;
