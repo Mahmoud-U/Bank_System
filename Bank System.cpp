@@ -9,9 +9,10 @@ using namespace std;
 
 void clearScreen();
 void showMenu();
+
 int main()
 {
-	showMenu();
+	/*showMenu();*/
 
 	////Test 1
 	//Client C1(1, "Batman", "Baaat1234", 4000);
@@ -48,12 +49,13 @@ int main()
 
 
 	//Test2
-	/*Client c(123, "Maged", "CorrectPass123", 100000);
+	/*Client c(333, "Maged", "Correct123pass", 100000);
 	c.Display();
 	cout << "\n===================================\n";
 
-	Employee e(123, "Maged", "CorrectPass123", 100000,8000);
+	Employee e(111, "Kareem", "456Password", 800000,7000);
 	e.Display();*/
+
 
 	return 0;
 }

@@ -4,6 +4,7 @@
 #include <vector>
 #include <cmath>
 #include <regex>
+#include <exception>
 using namespace std;
 class Bank_System
 {
