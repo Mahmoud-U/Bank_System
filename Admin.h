@@ -18,6 +18,27 @@ public:
 		Employee::Display();
 	}
 
+<<<<<<< Updated upstream
+=======
+	// Methods
+	//void addClient(Client& client)
+	//{
+	//	vector<Client*> clients;			//use pointers to save a lot of copies
+	//	clients.push_back(new Client);
+	//}
+
+	void addClient(Client& client)
+	{
+		vector<Client> clients;
+		clients.push_back(client);
+	}
+
+	Client* searchClient(int id)
+	{
+
+	}
+
+>>>>>>> Stashed changes
 	/*Person* display() {
 		return this;
 	};*/
