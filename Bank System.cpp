@@ -4,15 +4,18 @@
 #include <cmath>
 #include <limits>
 #include <conio.h>
-#include "Bank_System.h"
+#include "Person.h"
+#include "Client.h"
+#include "Employee.h"
+#include "Admin.h"
 using namespace std;
 
-void clearScreen();
-void showMenu();
+//void clearScreen();
+//void showMenu();
 
 int main()
 {
-	showMenu();
+	/*showMenu();*/
 
 	//Test 1
 	/*Client C1(1, "Batman", "Baaat1234", 4000);
@@ -40,7 +43,7 @@ int main()
 	C3.Display();
 	cout << "\n===================================\n";
 
-	Employee E1(4, "Spiderman", "Spider12345*$@#", 30000, 12000);
+	Employee E1(8, "Spiderman", "Spider12345*$@#", 30000, 12000);
 	E1.Display(); 
 	cout << "\n===================================\n";
 
@@ -49,107 +52,107 @@ int main()
 
 
 	//Test2
-	/*Client c(333, "Maged", "Correct123pass", 100000);
-	c.Display();
+	Client g(250, "Ali", "Alibaba2020", 10000);
+	g.Display();
 	cout << "\n===================================\n";
 
-	Employee e(111, "Kareem", "456Password", 800000,7000);
-	e.Display();*/
-
+	Employee E1(100, "Spiderman", "Spider45*$@#", 30000, 12000);
+	E1.Display();
+	cout << "\n===================================\n";
 
 	return 0;
 }
 
-void clearScreen() 
-{
-    system("cls"); // Clear the console screen on Windows
-}
-
-void showMenu() 
-{
-    int choice;
-    do {
-        void clearScreen();         // Clear the screen before displaying the menu
-        cout << "\nChoose an option:" << endl;
-        cout << "1. Client" << endl;
-        cout << "2. Employee" << endl;
-        cout << "3. Admin" << endl;
-
-        cout << "\nEnter your choice: ";
-        cin >> choice;
-
-        if (cin.fail() || choice < 1 || choice > 3) 
-        {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\nInvalid operation. Please choose a valid option. \n" <<
-                    "Hit Enter button to start again" << endl;
-            cout << "\n................................................................\n";
-            cin.get();              // Wait for user to press Enter to continue
-        }
-
-    } while (choice < 1 || choice > 3);
-
-    switch (choice) 
-    {
-    case 1:
-        clearScreen();
-        cout << "Press 0 to go back to the menu or press Esc to exit the program." << endl;
-        cout << "You chose Client." << endl;
-        while (true) 
-        {
-            char key = _getch();
-            if (key == '0') 
-            {
-                cin.get();
-                showMenu();
-                break;
-            }
-            else if (key == 27)      // 27 is the ASCII code for Esc
-            {  
-                exit(0);
-            }
-        }
-        break;
-
-    case 2:
-        clearScreen();
-        cout << "Press 0 to go back to the menu or press Esc to exit the program." << endl;
-        cout << "You chose Employee." << endl;
-        while (true) 
-        {
-            char key = _getch();
-            if (key == '0') 
-            {
-                cin.get();
-                showMenu();
-                break;
-            }
-            else if (key == 27) 
-            {  
-                exit(0);
-            }
-        }
-        break;
-
-    case 3:
-        clearScreen();
-        cout << "Press 0 to go back to the menu or press Esc to exit the program." << endl;
-        cout << "You chose Admin. Moving to the Admin screen..." << endl;
-        while (true) 
-        {
-            char key = _getch();
-            if (key == '0') 
-            {
-                cin.get();
-                showMenu();
-                break;
-            }
-            else if (key == 27) 
-            {  
-                exit(0);
-            }
-        }
-        break;
-    }
-}
+//void clearScreen() 
+//{
+//    system("cls"); // Clear the console screen on Windows
+//}
+//
+//void showMenu() 
+//{
+//    int choice;
+//    do {
+//        void clearScreen();         // Clear the screen before displaying the menu
+//        cout << "\nChoose an option:" << endl;
+//        cout << "1. Client" << endl;
+//        cout << "2. Employee" << endl;
+//        cout << "3. Admin" << endl;
+//
+//        cout << "\nEnter your choice: ";
+//        cin >> choice;
+//
+//        if (cin.fail() || choice < 1 || choice > 3) 
+//        {
+//            cin.clear();
+//            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//            cout << "\nInvalid operation. Please choose a valid option. \n" <<
+//                    "Hit Enter button to start again" << endl;
+//            cout << "\n................................................................\n";
+//            cin.get();              // Wait for user to press Enter to continue
+//        }
+//
+//    } while (choice < 1 || choice > 3);
+//
+//    switch (choice) 
+//    {
+//    case 1:
+//        clearScreen();
+//        cout << "Press 0 to go back to the menu or press Esc to exit the program." << endl;
+//        cout << "You chose Client." << endl;
+//        while (true) 
+//        {
+//            char key = _getch();
+//            if (key == '0') 
+//            {
+//                cin.get();
+//                showMenu();
+//                break;
+//            }
+//            else if (key == 27)      // 27 is the ASCII code for Esc
+//            {  
+//                exit(0);
+//            }
+//        }
+//        break;
+//
+//    case 2:
+//        clearScreen();
+//        cout << "Press 0 to go back to the menu or press Esc to exit the program." << endl;
+//        cout << "You chose Employee." << endl;
+//        while (true) 
+//        {
+//            char key = _getch();
+//            if (key == '0') 
+//            {
+//                cin.get();
+//                showMenu();
+//                break;
+//            }
+//            else if (key == 27) 
+//            {  
+//                exit(0);
+//            }
+//        }
+//        break;
+//
+//    case 3:
+//        clearScreen();
+//        cout << "Press 0 to go back to the menu or press Esc to exit the program." << endl;
+//        cout << "You chose Admin. Moving to the Admin screen..." << endl;
+//        while (true) 
+//        {
+//            char key = _getch();
+//            if (key == '0') 
+//            {
+//                cin.get();
+//                showMenu();
+//                break;
+//            }
+//            else if (key == 27) 
+//            {  
+//                exit(0);
+//            }
+//        }
+//        break;
+//    }
+//}

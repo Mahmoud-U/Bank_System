@@ -72,19 +72,6 @@ public:
 		cout << "Balance : " << getBalance() << endl;
 	}
 
-	void addClient(Client& client)
-	{
-		vector<Client> clients;
-		clients.push_back(client);
-	}
-
-	Client* searchClient(int id)
-	{
-		if (id)
-			Client::Display();
-		else
-			cout << "There is no client with this id \n";
-	}
 
 	/*Person* display() {
 		return this;

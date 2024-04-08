@@ -33,7 +33,7 @@ public:
 
 	Client* searchClient(int id)
 	{
-		
+
 	}
 
 	/*Person* display() {

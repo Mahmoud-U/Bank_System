@@ -6,8 +6,7 @@
 #include <regex>
 #include <exception>
 using namespace std;
-
-class Person 
+class Person
 {
 protected:
 	// Attributes
@@ -44,7 +43,7 @@ public:
 		catch (const exception& e) {
 			cerr << e.what() << endl;
 		}
-		
+
 		try {
 			setBalance(balance);
 		}
@@ -54,7 +53,7 @@ public:
 	}
 
 	// Setters
- 
+
 	// ID Validation
 	void setId(int id) {
 		string idStr = to_string(id);
@@ -69,6 +68,7 @@ public:
 
 		int idValue = stoi(idStr);
 		if (idValue < 1 || idValue > 1000) {
+			this->id = 0000000;
 			throw out_of_range("Invalid ID range. ID should be between 1 and 1000.");
 		}
 
@@ -95,7 +95,7 @@ public:
 	}
 
 	// Password Validation
-	void setPassword(string password) 
+	void setPassword(string password)
 	{
 		if (password.find(' ') != string::npos) {
 			throw runtime_error("Invalid password format. Password cannot contain spaces.");
@@ -120,7 +120,7 @@ public:
 	}
 
 	// Balance Validation
-	void setBalance(double balance) 
+	void setBalance(double balance)
 	{
 		if (balance < 1500) {
 			throw runtime_error("Minimum balance requirement not met. Balance should be at least 1500.");
@@ -130,15 +130,15 @@ public:
 	}
 
 	// Getters
-	int getId() 
+	int getId()
 	{
 		return this->id;
 	}
-	string getName() 
+	string getName()
 	{
 		return this->name;
 	}
-	string getPassword() 
+	string getPassword()
 	{
 		return this->password;
 	}
@@ -146,161 +146,12 @@ public:
 	{
 		return balance;
 	}
-
-	virtual void Display()
-	{
-		cout << "Person Details : " << endl;
-		cout << "ID : " << id << endl;
-		cout << "Name : " << name << endl;
-		cout << "Password : " << password << endl;
-		cout << "Balance : " << balance << endl;
-	}
+	
+	virtual void Display() = 0;
 
 	~Person()
 	{
-	
+
 	}
 };
 
-class Client : public Person 
-{
-public:
-	Client() {}
-	Client(int id, string name, string password, double balance)
-		:Person(id, name, password, balance) {}
-
-	// Deposite
-	void Deposit(double amount) 
-	{
-		if (amount > 0) 
-		{
-			balance += amount;
-			cout << "Deposit of " << amount << " successful. New balance : " << balance << endl;
-		}
-		else 
-		{
-			cout << "Invalid deposit amount. Please enter a positive value." << endl;
-		}
-	}
-
-	// Withdraw
-	void Withdraw(double amount) 
-	{
-		if (amount > 0 && balance - amount >= 1500) 
-		{
-			balance -= amount;
-			cout << "Withdrawal of " << amount << " successful. New balance : " << balance << endl;
-		}
-		else 
-		{
-			cout << "Invalid withdrawal amount or insufficient balance." << endl;
-		}
-	}
-
-	// TransferTo
-	void Transfer_To(double amount, Client& recipient) 
-	{
-		if (amount > 0 && balance - amount >= 1500) 
-		{
-			balance -= amount;
-			recipient.balance += amount;
-			cout << "Transfer of " << amount << " successful. New balance : " << balance << endl;
-		}
-		else 
-		{
-			cout << "Invalid transfer amount or insufficient balance." << endl;
-		}
-	}
-
-	// Check Balance
-	void Check_Balance() 
-	{
-		cout << "Current balance : " << balance << endl;
-	}
-
-	void Display() 
-	{
-		Person::Display();
-	}
-
-	/*Person* display() {
-		return this;
-	};*/
-
-	~Client()
-	{
-		
-	}
-};
-
-class Employee : public Person
-{
-protected:
-	double salary;
-public:
-	Employee() 
-	{
-		salary = 0.0;
-	}
-	Employee(int id, string name, string password, double balance, double salary)
-		:Person(id, name, password, balance)
-	{
-		try {
-			setSalary(salary);
-		}
-		catch (const exception& e) {
-			cerr << e.what() << endl;
-		}
-	}
-
-	// Salary Validation
-	void setSalary(double salary)
-	{
-		if (salary < 5000) {
-			throw runtime_error("Minimum salary requirement not met. Salary should be at least 5000.");
-		}
-
-		this->salary = salary;
-	}
-
-	double getSalary()
-	{
-		return this->salary = salary;
-	}
-	
-	void Display()
-	{
-		Person::Display();
-		cout << "Salary : " << salary << endl;
-	}
-	/*Person* display() {
-		return this;
-	};*/
-
-	~Employee()
-	{
-		
-	}
-};
-
-class Admin : public Employee
-{
-public:
-	Admin() {}
-	Admin(int id, string name, string password, double balance, double Salary)
-		:Employee(id, name, password, balance, Salary) {}
-
-	void Display()
-	{
-		Employee::Display();
-	}
-
-	/*Person* display() {
-		return this;
-	};*/
-
-	~Admin()
-	{
-		
-	}
-};
