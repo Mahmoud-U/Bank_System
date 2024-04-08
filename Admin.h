@@ -18,12 +18,6 @@ public:
 		Employee::Display();
 	}
 
-	// Methods
-	void addClient(Client& client)
-	{
-		
-	}
-
 	/*Person* display() {
 		return this;
 	};*/
