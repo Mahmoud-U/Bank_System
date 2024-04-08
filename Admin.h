@@ -18,8 +18,6 @@ public:
 		Employee::Display();
 	}
 
-<<<<<<< Updated upstream
-=======
 	// Methods
 	//void addClient(Client& client)
 	//{
@@ -38,7 +36,6 @@ public:
 
 	}
 
->>>>>>> Stashed changes
 	/*Person* display() {
 		return this;
 	};*/
