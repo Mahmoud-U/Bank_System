@@ -50,15 +50,17 @@ int main()
 	Admin A1(5, "Ironman", "Iron12345", 30000, 8000);
 	A1.Display();*/
 
-
 	//Test2
-	Client g(250, "Ali", "Alibaba2020", 10000);
+	/*Client g(250, "Ali", "Alibaba2020", 10000);
 	g.Display();
 	cout << "\n===================================\n";
 
 	Employee E1(100, "Spiderman", "Spider45*$@#", 30000, 12000);
 	E1.Display();
-	cout << "\n===================================\n";
+	cout << "\n===================================\n";*/
+
+	
+
 
 	return 0;
 }

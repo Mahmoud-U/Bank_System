@@ -18,24 +18,6 @@ public:
 		Employee::Display();
 	}
 
-	// Methods
-	//void addClient(Client& client)
-	//{
-	//	vector<Client*> clients;			//use pointers to save a lot of copies
-	//	clients.push_back(new Client);
-	//}
-
-	void addClient(Client& client)
-	{
-		vector<Client> clients;
-		clients.push_back(client);
-	}
-
-	Client* searchClient(int id)
-	{
-
-	}
-
 	/*Person* display() {
 		return this;
 	};*/

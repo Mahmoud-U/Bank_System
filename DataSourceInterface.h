@@ -10,9 +10,9 @@ using namespace std;
 class DataSourceInterface
 {
 public:
-	virtual void addClient(Client c) = 0;
-	virtual void addEmployee(Employee e) = 0;
-	virtual void addAdmin(Admin a) = 0;
+	virtual void addClient(Client& c) = 0;
+	virtual void addEmployee(Employee& e) = 0;
+	virtual void addAdmin(Admin& a) = 0;
 
 	virtual vector<Client> getAllClients() = 0;
 	virtual vector<Employee> getAllEmployees() = 0;
