@@ -17,8 +17,8 @@ public:
 
 		if (myFile.is_open())
 		{
-			myFile << "Employee ID : " << "," << "Name : " << c.getName() << "," << "Password : " << c.getPassword() << ","
-				<< "Balance : " << c.getBalance() << "," << "Salary : " << endl;
+			myFile << c.getId() << "$" << c.getName() << "$" << c.getPassword() << "$"
+				<< c.getBalance() << "$" << endl;
 
 			cout << "Client Information Saved \n";
 			myFile.close();
@@ -29,13 +29,12 @@ public:
 
 	void addEmployee(Employee& e) override
 	{
-		// Stream class to write on files
 		ofstream myFile("Employee.txt", ios::app);
 
 		if (myFile.is_open())
 		{
-			myFile << "Employee ID : " << "," << "Name : " << e.getName() << "," << "Password : " << e.getPassword() << "," 
-				   << "Balance : " << e.getBalance() << "," << "Salary : " << e.getSalary() << endl;
+			myFile << e.getId() << "$" << e.getName() << "$" << e.getPassword() << "$" 
+				   << e.getBalance() << "$" << e.getSalary() << endl;
 
 			cout << "Employee Information Saved \n";
 			myFile.close();
@@ -46,13 +45,12 @@ public:
 
 	void addAdmin(Admin& a) override
 	{
-		// Stream class to write on files
 		ofstream myFile("Admins.txt", ios::app);
 
 		if (myFile.is_open())
 		{
-			myFile << "Admin ID : " << "," << "Name : " << a.getName() << "," << "Password : " << a.getPassword() << ","
-				<< "Balance : " << a.getBalance() << "," << "Salary : " << a.getSalary() << endl;
+			myFile << a.getId() << "$" << a.getName() << "$" << a.getPassword() << "$"
+				<< a.getBalance() << "$" << a.getSalary() << endl;
 
 			cout << "Admin Information Saved \n";
 			myFile.close();
@@ -61,6 +59,10 @@ public:
 			cerr << "Unable to open the file \n";
 	}
 
+	vector<Client> getAllClients()
+	{
+
+	}
 
 };
 
