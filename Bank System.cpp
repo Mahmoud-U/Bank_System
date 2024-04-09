@@ -8,6 +8,7 @@
 #include "Client.h"
 #include "Employee.h"
 #include "Admin.h"
+#include "FileManager.h"
 using namespace std;
 
 //void clearScreen();
@@ -15,6 +16,26 @@ using namespace std;
 
 int main()
 {
+	//Test file manager
+
+	/*Client C1(123, "Batman", "Baaat1234", 4000);
+	Client C2(245, "Superman", "Uranium985", 7000);*/
+
+	FileManager f;
+	/*f.addClient(C1);
+	f.addClient(C2);
+	cout << endl;*/
+
+	vector<Client> clients = f.getAllClients();
+
+	cout << "Clients : \n";
+	for (Client& client : clients)
+	{
+		cout << client.getId() << client.getName() << client.getPassword() << client.getBalance() << endl;
+	}
+
+	cout << "\n===================================\n";
+
 	/*showMenu();*/
 
 	//Test 1
@@ -58,9 +79,6 @@ int main()
 	Employee E1(100, "Spiderman", "Spider45*$@#", 30000, 12000);
 	E1.Display();
 	cout << "\n===================================\n";*/
-
-	
-
 
 	return 0;
 }

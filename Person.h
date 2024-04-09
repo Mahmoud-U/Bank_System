@@ -144,7 +144,7 @@ public:
 	}
 	double getBalance()
 	{
-		return balance;
+		return this->balance;
 	}
 	
 	virtual void Display() = 0;
