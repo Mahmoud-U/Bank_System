@@ -1,0 +1,147 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+
+class Client {
+public:
+    int id;
+    string name;
+    string password;
+    double balance;
+
+    Client(int id, const string& name, const string& password, double balance)
+        : id(id), name(name), password(password), balance(balance) {}
+};
+
+
+class Employee {
+public:
+    int id;
+    string name;
+    string password;
+    double salary;
+
+    Employee(int id, const string& name, const string& password, double salary)
+        : id(id), name(name), password(password), salary(salary) {}
+};
+
+
+class Admin {
+private:
+    vector<Client*> clients;
+    vector<Employee*> employees;
+
+public:
+ 
+    void addClient(Client& client) {
+        clients.push_back(&client);
+    }
+
+   
+    Client* searchClient(int id) {
+        for (Client* client : clients) {
+            if (client->id == id) {
+                return client;
+            }
+        }
+        return nullptr; 
+    }
+
+  
+    void listClients() {
+        cout << "List of Clients:" << endl;
+        for (Client* client : clients) {
+            cout << "ID: " << client->id << ", Name: " << client->name << ", Balance: $" << client->balance << endl;
+        }
+    }
+
+    
+    void editClient(int id, string name, string password, double balance) {
+        Client* client = searchClient(id);
+        if (client) {
+            client->name = name;
+            client->password = password;
+            client->balance = balance;
+            cout << "Client information updated successfully." << endl;
+        }
+        else {
+            cout << "Client not found." << endl;
+        }
+    }
+
+   
+    void addEmployee(Employee& employee) {
+        employees.push_back(&employee);
+    }
+
+
+    Employee* searchEmployee(int id) {
+        for (Employee* employee : employees) {
+            if (employee->id == id) {
+                return employee;
+            }
+        }
+        return nullptr; 
+    }
+
+  
+    void editEmployee(int id, string name, string password, double salary) {
+        Employee* employee = searchEmployee(id);
+        if (employee) {
+            employee->name = name;
+            employee->password = password;
+            employee->salary = salary;
+            cout << "Employee information updated successfully." << endl;
+        }
+        else {
+            cout << "Employee not found." << endl;
+        }
+    }
+
+   
+    void listEmployees() {
+        cout << "List of Employees:" << endl;
+        for (Employee* employee : employees) {
+            cout << "ID: " << employee->id << ", Name: " << employee->name << ", Salary: $" << employee->salary << endl;
+        }
+    }
+};
+
+
+int main() {
+   
+    Admin admin;
+
+   
+    Client client1(1, "mahmoud", "password123", 1000.0);
+    Client client2(2, "hassan", "pass123", 1500.0);
+    admin.addClient(client1);
+    admin.addClient(client2);
+
+
+    Employee employee1(101, "tayseer", "emp_pass", 3000.0);
+    Employee employee2(102, "youmna", "emp123", 3500.0);
+    admin.addEmployee(employee1);
+    admin.addEmployee(employee2);
+
+   
+    admin.listClients();
+    cout << endl;
+    admin.listEmployees();
+    cout << endl;
+
+   
+    admin.editClient(1, "mahmoud", "newpass", 1200.0);
+    admin.editEmployee(102, "hassan", "new_emp123", 4000.0);
+
+  
+    cout << endl;
+    admin.listClients();
+    cout << endl;
+    admin.listEmployees();
+
+    return 0;
+}
