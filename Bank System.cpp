@@ -4,37 +4,39 @@
 #include <cmath>
 #include <limits>
 #include <conio.h>
+#include<fstream>
 #include "Person.h"
 #include "Client.h"
 #include "Employee.h"
 #include "Admin.h"
 #include "FileManager.h"
+#include"FilesHelperGet.h"
 using namespace std;
 
 //void clearScreen();
 //void showMenu();
 
 int main()
-{
-	//Test file manager
-
-	/*Client C1(123, "Batman", "Baaat1234", 4000);
-	Client C2(245, "Superman", "Uranium985", 7000);*/
-
-	FileManager f;
-	/*f.addClient(C1);
-	f.addClient(C2);
-	cout << endl;*/
-
-	vector<Client> clients = f.getAllClients();
-
-	cout << "Clients : \n";
-	for (Client& client : clients)
-	{
-		cout << client.getId() << client.getName() << client.getPassword() << client.getBalance() << endl;
-	}
-
-	cout << "\n===================================\n";
+//{
+//	Test file manager
+//
+//	/*Client C1(123, "Batman", "Baaat1234", 4000);
+//	Client C2(245, "Superman", "Uranium985", 7000);*/
+//
+//	FileManager f;
+//	/*f.addClient(C1);
+//	f.addClient(C2);
+//	cout << endl;*/
+//
+//	vector<Client> clients = f.getAllClients();
+//
+//	cout << "Clients : \n";
+//	for (Client& client : clients)
+//	{
+//		cout << client.getId() << client.getName() << client.getPassword() << client.getBalance() << endl;
+//	}
+//
+//	cout << "\n===================================\n";
 
 	/*showMenu();*/
 
@@ -79,6 +81,30 @@ int main()
 	Employee E1(100, "Spiderman", "Spider45*$@#", 30000, 12000);
 	E1.Display();
 	cout << "\n===================================\n";*/
+
+	//Test file helper get 
+	cout << "get data from test file:" << endl;
+	cout << "contents:" << endl;
+    cout << FilesHelperGet::getLast("TEST.txt");
+	cout << "**********************************************\n";
+	cout << "get data from clients file:" << endl;
+	cout << "contents:" << endl;
+	FilesHelperGet::getClients();
+	cout << "**********************************************\n";
+	cout << "get data from employees file:" << endl;
+	cout << "contents:" << endl;
+	FilesHelperGet::getEmployees();
+	cout << "**********************************************\n";
+	cout << "get data from Admin file:" << endl;
+	cout << "contents:" << endl;
+	FilesHelperGet::getEmployees();
+	cout << "**********************************************\n";
+	cout << "get last id from file:" << endl;
+	cout << "contents:" << endl;
+	cout << FilesHelperGet::getLastID("TEST.txt");
+	cout << "**********************************************\n";
+	
+
 
 	return 0;
 }
