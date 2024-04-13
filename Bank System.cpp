@@ -17,7 +17,7 @@ using namespace std;
 //void showMenu();
 
 int main()
-//{
+{
 //	Test file manager
 //
 //	/*Client C1(123, "Batman", "Baaat1234", 4000);
@@ -83,7 +83,7 @@ int main()
 	cout << "\n===================================\n";*/
 
 	//Test file helper get 
-	cout << "get data from test file:" << endl;
+	/*cout << "get data from test file:" << endl;
 	cout << "contents:" << endl;
     cout << FilesHelperGet::getLast("TEST.txt");
 	cout << "**********************************************\n";
@@ -102,12 +102,14 @@ int main()
 	cout << "get last id from file:" << endl;
 	cout << "contents:" << endl;
 	cout << FilesHelperGet::getLastID("TEST.txt");
-	cout << "**********************************************\n";
+	cout << "**********************************************\n";*/
 	
 
 
 	return 0;
 }
+
+
 
 //void clearScreen() 
 //{
