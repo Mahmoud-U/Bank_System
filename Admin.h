@@ -15,8 +15,8 @@ private://singleton design pattern
 	Admin() {}
 	Admin(int id, string name, string password, double balance, double Salary)
 		:Employee(id, name, password, balance, Salary) {}
-		
-			
+
+
 public:
 	//3.remove the copy constructor
 	Admin(const Admin& obj)
@@ -59,4 +59,3 @@ public:
 
 	}
 };
-
