@@ -3,7 +3,7 @@
 #include <vector>
 #include <cmath>
 #include <limits>
-#include <conio.h>
+
 #include<fstream>
 #include "Person.h"
 #include "Client.h"
@@ -85,23 +85,23 @@ int main()
 	//Test file helper get 
 	cout << "get data from test file:" << endl;
 	cout << "contents:" << endl;
-    cout << FilesHelperGet::getLast("TEST.txt");
+    cout << FilesHelper::getLast("TEST.txt");
 	cout << "**********************************************\n";
 	cout << "get data from clients file:" << endl;
 	cout << "contents:" << endl;
-	FilesHelperGet::getClients();
+	FilesHelper::getClients();
 	cout << "**********************************************\n";
 	cout << "get data from employees file:" << endl;
 	cout << "contents:" << endl;
-	FilesHelperGet::getEmployees();
+	FilesHelper::getEmployees();
 	cout << "**********************************************\n";
 	cout << "get data from Admin file:" << endl;
 	cout << "contents:" << endl;
-	FilesHelperGet::getEmployees();
+	FilesHelper::getEmployees();
 	cout << "**********************************************\n";
 	cout << "get last id from file:" << endl;
 	cout << "contents:" << endl;
-	cout << FilesHelperGet::getLastID("TEST.txt");
+	cout << FilesHelper::getLastID("TEST.txt");
 	cout << "**********************************************\n";
 	
 

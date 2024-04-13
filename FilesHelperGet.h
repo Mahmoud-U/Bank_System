@@ -6,7 +6,7 @@
 #include "Admin.h"
 #include "Client.h"
 using namespace std;
-class FilesHelperGet  {
+class FilesHelper  {
 public:
 	
 	/*this class is for the fet functions only, saving functions are put in different class
@@ -51,8 +51,16 @@ public:
 			int number;
 			if (iss >> number) {
 				firstn = number;
-				
+			}
+			// Stream class to write on files
+			ofstream newFile("ClientsLastID.txt", ios::app);
 
+			if (newFile.is_open())
+			{
+				newFile << firstn;
+				cout << "firstn" << firstn;
+				cout << "Client new id is Saved \n";
+				newFile.close();
 			}
 
 			inputFile.close();
