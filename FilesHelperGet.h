@@ -6,27 +6,31 @@
 #include "Admin.h"
 #include "Client.h"
 using namespace std;
+<<<<<<< HEAD
 class FilesHelper  {
+=======
+class FilesHelperGet {
+>>>>>>> 492300c4b60b71e5d3e72e5768ee622342b25239
 public:
-	
+
 	/*this class is for the fet functions only, saving functions are put in different class
 	-getLast function returns the content of any file provided to the function in its parameter
 	-getClients function returns the content of clients file the function doesn't take any parameters
 	-getEmployees function returns the content of employees file the function doesn't take any parameters
 	-getAdmins function returns the content of Admins file the function doesn't take any parameters
 	*/
-		
+
 	static string getLast(const string& fileName) {
 		std::ifstream inputFile(fileName);
 		string data;
 		string line;
-		
+
 		if (inputFile.is_open()) {
-			
+
 			while (getline(inputFile, line)) {
-				cout<< line <<endl;
+				cout << line << endl;
 			}
-			
+
 			inputFile.close();
 			cout << "data from file: " << fileName << endl;
 
@@ -51,9 +55,13 @@ public:
 			int number;
 			if (iss >> number) {
 				firstn = number;
+<<<<<<< HEAD
 			}
 			// Stream class to write on files
 			ofstream newFile("ClientsLastID.txt", ios::app);
+=======
+
+>>>>>>> 492300c4b60b71e5d3e72e5768ee622342b25239
 
 			if (newFile.is_open())
 			{
