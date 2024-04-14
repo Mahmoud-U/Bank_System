@@ -38,6 +38,8 @@ int main()
 		cout << "=========================================\n";
 	}
 
+	//f.removeAllClients();
+
 	/*showMenu();*/
 
 	//Test 1

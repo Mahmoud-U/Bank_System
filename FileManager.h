@@ -130,8 +130,8 @@ public:
 	void removeAllClients() override
 	{
 		ofstream file("Clients.txt", ios::trunc);
-		cout << "All Clients Removed \n";
 		file.close();
+		cout << "All Clients Removed \n";
 		
 		if (!file) {
 			cerr << "Unable to clear all clients \n";
@@ -141,8 +141,8 @@ public:
 	void removeAllEmployees()
 	{
 		ofstream file("Employee.txt", ios::trunc);
-		cout << "All Employees Removed \n";
 		file.close();
+		cout << "All Employees Removed \n";
 
 		if (!file) {
 			cerr << "Unable to clear all employees \n";
@@ -152,8 +152,8 @@ public:
 	void removeAllAdmins()
 	{
 		ofstream file("Admins.txt", ios::trunc);
-		cout << "All Admins Removed \n";
 		file.close();
+		cout << "All Admins Removed \n";
 
 		if (!file) {
 			cerr << "Unable to clear all admins \n";
