@@ -1,13 +1,16 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
 #include <fstream>
 #include <sstream>
 #include "Client.h"
 #include "Employee.h"
 #include "Admin.h"
 #include "DataSourceInterface.h"
+#include "Parser.h"
 using namespace std;
+
 class FileManager : public DataSourceInterface
 {
 public:
@@ -68,14 +71,7 @@ public:
 			string line;
 			while (getline(file, line)) 
 			{
-				stringstream ss(line);
-				string idstr, name, password, balanceStr;
-				if (getline(ss, idstr, '$') && getline(ss, name, '$') && getline(ss, password, '$') && getline(ss, balanceStr, '$')) 
-				{
-					int id = stoi(idstr);
-					double balance = stod(balanceStr);
-					clients.emplace_back(id, name, password, balance);
-				}
+				clients.push_back(Parser::parseToClient(line));
 			}
 			file.close();
 		}
@@ -152,6 +148,8 @@ public:
 
 	void removeAllClients() override
 	{
+		ofstream file("Clients.txt", ios::trunc);
+		file.close();
 		removeData("Clients.txt");
 		cout << "All Clients Removed \n";
 	}
@@ -159,11 +157,13 @@ public:
 	void removeAllEmployees()
 	{
 		removeData("Employee.txt");
+		cout << "All Employees Removed \n";
 	}
 
 	void removeAllAdmins()
 	{
 		removeData("Admins.txt");
+		cout << "All Admins Removed \n";
 	}
 
 	//Display
