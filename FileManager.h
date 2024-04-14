@@ -15,7 +15,8 @@ using namespace std;
 class FileManager : public DataSourceInterface
 {
 public:
-	// Add
+				// Add
+
 	void addClient(Client& c) override
 	{
 		// Stream class to write on files
@@ -62,7 +63,8 @@ public:
 			cerr << "Unable to open the file \n";
 	}
 
-	//Get
+				// Get
+
 	vector<Client> getAllClients()
 	{
 		vector<Client> clients;
@@ -125,7 +127,7 @@ public:
 		return admins;
 	}
 
-	//Remove
+				//Remove
 
 	void removeAllClients() override
 	{
