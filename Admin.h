@@ -6,19 +6,18 @@
 #include "Client.h"
 class Admin : public Employee
 {
-private:
+protected:
 	//singleton design pattern
 	//1.private constructor
 	//2.static object pointer
 
     static Admin* obj;
-	vector<Client*> clients;
 	vector<Employee*> employees;
     
 public:
     Admin() {}
-    Admin(int id, string name, string password, double balance, double Salary)
-        :Employee(id, name, password, balance, Salary) {}
+    Admin(int id, string name, string password, double Salary)
+        :Employee(id, name, password, Salary) {}
 	
 	//3.remove the copy constructor
  //   Admin(const Admin& obj) = delete;          //deleting copy constructor
@@ -48,38 +47,7 @@ public:
  //       }
  //   }
 
-    void addClient(Client& client) 
-    {
-        clients.push_back(&client);
-    }
-
-    Client* searchClient(int id) {
-        for (Client* client : clients) {
-            if (client->id == id) {
-                return client;
-            }
-        }
-        return nullptr;
-    }
-
-    void listClient() {
-    for (Client* client : clients) {
-        std::cout << "ID: " << client->getId() << ", Name: " << client->getName() << std::endl;
-    }
-}
-
-    void editClient(int id, string name, string password, double balance) {
-        Client* client = searchClient(id);
-        if (client) {
-            client->name = name;
-            client->password = password;
-            client->balance = balance;
-            cout << "Client information updated successfully." << endl;
-        }
-        else {
-            cout << "Client not found." << endl;
-        }
-    }
+    
 
     void addEmployee(Employee& employee) {
         employees.push_back(&employee);

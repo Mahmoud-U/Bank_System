@@ -11,6 +11,7 @@ class Client : public Person
 {
 protected:
 	// Declare Admin as a friend class to allow access to protected members
+	friend class Employee;
 	friend class Admin;
 	friend class FileManager;
 

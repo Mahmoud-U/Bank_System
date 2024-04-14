@@ -19,8 +19,7 @@ public:
 
 		if (myFile.is_open())
 		{
-			myFile << c.getId() << "$" << c.getName() << "$" << c.getPassword() << "$"
-				<< c.getBalance() << "$" << endl;
+			myFile << c.getId() << "$" << c.getName() << "$" << c.getPassword() << "$" << c.getBalance() << endl;
 
 			cout << "Client Information Saved \n";
 			myFile.close();
@@ -35,8 +34,7 @@ public:
 
 		if (myFile.is_open())
 		{
-			myFile << e.getId() << "$" << e.getName() << "$" << e.getPassword() << "$"
-				<< e.getBalance() << "$" << e.getSalary() << endl;
+			myFile << e.getId() << "$" << e.getName() << "$" << e.getPassword() << "$" << e.getSalary() << endl;
 
 			cout << "Employee Information Saved \n";
 			myFile.close();
@@ -51,8 +49,7 @@ public:
 
 		if (myFile.is_open())
 		{
-			myFile << a.getId() << "$" << a.getName() << "$" << a.getPassword() << "$"
-				<< a.getBalance() << "$" << a.getSalary() << endl;
+			myFile << a.getId() << "$" << a.getName() << "$" << a.getPassword() << "$" << a.getSalary() << endl;
 
 			cout << "Admin Information Saved \n";
 			myFile.close();
@@ -73,7 +70,8 @@ public:
 			{
 				stringstream ss(line);
 				string idstr, name, password, balanceStr;
-				if (getline(ss, idstr, '$') && getline(ss, name, '$') && getline(ss, password, '$') && getline(ss, balanceStr, '$')) {
+				if (getline(ss, idstr, '$') && getline(ss, name, '$') && getline(ss, password, '$') && getline(ss, balanceStr, '$')) 
+				{
 					int id = stoi(idstr);
 					double balance = stod(balanceStr);
 					clients.emplace_back(id, name, password, balance);
@@ -99,12 +97,12 @@ public:
 			while (getline(file, line))
 			{
 				stringstream ss(line);
-				string idstr, name, password, balanceStr, salaryStr;
-				if (getline(ss, idstr, '$') && getline(ss, name, '$') && getline(ss, password, '$') && getline(ss, balanceStr, '$') && getline(ss, salaryStr, '$')) {
+				string idstr, name, password, salaryStr;
+				if (getline(ss, idstr, '$') && getline(ss, name, '$') && getline(ss, password, '$') && getline(ss, salaryStr, '$'))
+				{
 					int id = stoi(idstr);
-					double balance = stod(balanceStr);
 					double salary = stod(salaryStr);
-					employees.emplace_back(id, name, password, balance, salary);
+					employees.emplace_back(id, name, password, salary);
 				}
 			}
 			file.close();
@@ -127,12 +125,12 @@ public:
 			while (getline(file, line))
 			{
 				stringstream ss(line);
-				string idstr, name, password, balanceStr, salaryStr;
-				if (getline(ss, idstr, '$') && getline(ss, name, '$') && getline(ss, password, '$') && getline(ss, balanceStr, '$') && getline(ss, salaryStr, '$')) {
+				string idstr, name, password, salaryStr;
+				if (getline(ss, idstr, '$') && getline(ss, name, '$') && getline(ss, password, '$') && getline(ss, salaryStr, '$'))
+				{
 					int id = stoi(idstr);
-					double balance = stod(balanceStr);
 					double salary = stod(salaryStr);
-					admins.emplace_back(id, name, password, balance, salary);
+					admins.emplace_back(id, name, password, salary);
 				}
 			}
 			file.close();

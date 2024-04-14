@@ -5,29 +5,120 @@
 #include <cmath>
 #include <regex>
 #include <exception>
-#include "Person.h"
-class Employee : public Person
+#include "Client.h"
+class Employee
 {
 protected:
+	int id;
+	string name;
+	string password;
 	double salary;
 
 	// Declare Admin as a friend class to allow access to protected members
+	vector<Client*> clients;
 	friend class Admin;
 
 public:
 	Employee()
 	{
+		id = 0;
 		salary = 0.0;
 	}
-	Employee(int id, string name, string password, double balance, double salary)
-		:Person(id, name, password, balance)
+	Employee(int id, string name, string password, double salary)
 	{
+		try {
+			setId(id);
+		}
+		catch (const exception& e) {
+			cerr << e.what() << endl;
+		}
+
+		try {
+			setName(name);
+		}
+		catch (const exception& e) {
+			cerr << e.what() << endl;
+		}
+
+		try {
+			setPassword(password);
+		}
+		catch (const exception& e) {
+			cerr << e.what() << endl;
+		}
 		try {
 			setSalary(salary);
 		}
 		catch (const exception& e) {
 			cerr << e.what() << endl;
 		}
+	}
+
+	// Setters
+
+	// ID Validation
+	void setId(int id) {
+		string idStr = to_string(id);
+
+		if (idStr.empty()) {
+			throw invalid_argument("Invalid ID format. ID cannot be empty.");
+		}
+
+		if (idStr.find_first_not_of("0123456789") != string::npos) {
+			throw invalid_argument("Invalid ID format. ID should contain only numbers.");
+		}
+
+		int idValue = stoi(idStr);
+		if (idValue < 1 || idValue > 1000) {
+			this->id = 0000000;
+			throw out_of_range("Invalid ID range. ID should be between 1 and 1000.");
+		}
+
+		this->id = idValue;
+	}
+
+	// Name Validation using regular expressions
+	void setName(string name)
+	{
+		if (regex_search(name, regex("\\s"))) {
+			throw invalid_argument("Invalid name format. Name cannot contain spaces.");
+		}
+		if (name.empty()) {
+			throw runtime_error("Invalid name format. Name cannot be empty.");
+		}
+		if (regex_search(name, regex("\\d"))) {
+			throw invalid_argument("Invalid name format. Name cannot contain numbers.");
+		}
+		if (!regex_match(name, regex("^[A-Z][a-z]{2,19}$"))) {
+			throw invalid_argument("Invalid name format. Name must start with an uppercase letter, followed by 2 to 19 lowercase letters.");
+		}
+
+		this->name = name;
+	}
+
+	// Password Validation using regular expressions
+	void setPassword(string password)
+	{
+		if (password.find(' ') != string::npos) {
+			throw runtime_error("Invalid password format. Password cannot contain spaces.");
+		}
+		if (password.empty()) {
+			throw runtime_error("Invalid password format. Password cannot be empty.");
+		}
+		if (!regex_match(password, regex(".*\\d.*"))) {
+			throw runtime_error("Invalid password format. Password must contain at least one digit.");
+		}
+		if (!regex_match(password, regex(".*[a-z].*"))) {
+			throw runtime_error("Invalid password format. Password must contain at least one lowercase letter.");
+		}
+		if (!regex_match(password, regex(".*[A-Z].*"))) {
+			throw runtime_error("Invalid password format. Password must contain at least one uppercase letter.");
+		}
+		if (password.size() < 8 || password.size() > 20) {
+			throw runtime_error("Invalid password format. Password must be 8 to 20 characters long.");
+		}
+
+		this->password = password;
 	}
 
 	// Salary Validation
@@ -40,6 +131,19 @@ public:
 		this->salary = salary;
 	}
 
+	// Getters
+	int getId()
+	{
+		return this->id;
+	}
+	string getName()
+	{
+		return this->name;
+	}
+	string getPassword()
+	{
+		return this->password;
+	}
 	double getSalary()
 	{
 		return this->salary = salary;
@@ -51,9 +155,46 @@ public:
 		cout << "ID : " << getId() << endl;
 		cout << "Name : " << getName() << endl;
 		cout << "Password : " << getPassword() << endl;
-		cout << "Balance : " << getBalance() << endl;
 		cout << "Salary : " << getSalary() << endl;
 	}
+
+	void addClient(Client& client)
+	{
+		clients.push_back(&client);
+	}
+
+	Client* searchClient(int id)
+	{
+		for (Client* client : clients)
+		{
+			if (client->id == id) {
+				return client;
+			}
+		}
+		return nullptr;
+	}
+
+	void listClient() {
+		for (Client* client : clients)
+		{
+			std::cout << "ID: " << client->getId() << ", Name: " << client->getName() << endl;
+		}
+	}
+
+	void editClient(int id, string name, string password, double balance)
+	{
+		Client* client = searchClient(id);
+		if (client) {
+			client->name = name;
+			client->password = password;
+			client->balance = balance;
+			cout << "Client information updated successfully." << endl;
+		}
+		else {
+			cout << "Client not found." << endl;
+		}
+	}
+
 	/*Person* display() {
 		return this;
 	};*/
