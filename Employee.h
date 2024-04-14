@@ -149,15 +149,6 @@ public:
 		return this->salary = salary;
 	}
 
-	void Display()
-	{
-		cout << "Person Details : " << endl;
-		cout << "ID : " << getId() << endl;
-		cout << "Name : " << getName() << endl;
-		cout << "Password : " << getPassword() << endl;
-		cout << "Salary : " << getSalary() << endl;
-	}
-
 	void addClient(Client& client)
 	{
 		clients.push_back(&client);
@@ -193,6 +184,15 @@ public:
 		else {
 			cout << "Client not found." << endl;
 		}
+	}
+
+	void Display()
+	{
+		cout << "Person Details : " << endl;
+		cout << "ID : " << getId() << endl;
+		cout << "Name : " << getName() << endl;
+		cout << "Password : " << getPassword() << endl;
+		cout << "Salary : " << getSalary() << endl;
 	}
 
 	/*Person* display() {

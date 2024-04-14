@@ -20,24 +20,22 @@ int main()
 {
 //	Test file manager
 //
-	Client C3(101, "Mido", "Testpass1##", 800000);
+	//Client C3(102, "Amigo", "Testingpass1##", 600000);
 //	Client C2(245, "Superman", "Uranium985", 7000);
 //
 	FileManager f;
 	//f.addClient(C1);
-	f.addClient(C3);
-	cout << endl;
+	//f.addClient(C3);
+	//cout << endl;
 
 	vector<Client> clients = f.getAllClients();
 
 	cout << "Clients : \n";
 	for (Client& client : clients)
 	{
-		cout << "Client ID : " << client.getId() << endl;
-		cout << "Name : " << client.getName() << endl;
-		cout << "Password : " << client.getPassword() << endl;
-		cout << ", Balance : " << client.getBalance() << endl;
-		cout << "\n===================================\n";
+		cout << "Client ID : " << client.getId() << ", Name : " << client.getName()
+			<< ", Password : " << client.getPassword() << ", Balance : " << client.getBalance() << endl;
+		cout << "=========================================\n";
 	}
 
 	/*showMenu();*/
