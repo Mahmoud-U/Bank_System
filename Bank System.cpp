@@ -66,11 +66,11 @@ int main()
 	C3.Display();
 	cout << "\n===================================\n";
 
-	Employee E1(8, "Spiderman", "Spider12345*$@#", 30000, 12000);
+	Employee E1(8, "Spiderman", "Spider12345*$@#", 12000);
 	E1.Display(); 
 	cout << "\n===================================\n";
 
-	Admin A1(5, "Ironman", "Iron12345", 30000, 8000);
+	Admin A1(5, "Ironman", "Iron12345", 8000);
 	A1.Display();*/
 
 	//Test2
@@ -78,7 +78,7 @@ int main()
 	g.Display();
 	cout << "\n===================================\n";
 
-	Employee E1(100, "Spiderman", "Spider45*$@#", 30000, 12000);
+	Employee E1(100, "Spiderman", "Spider45*$@#", 12000);
 	E1.Display();
 	cout << "\n===================================\n";*/
 
