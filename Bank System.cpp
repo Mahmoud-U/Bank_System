@@ -20,13 +20,13 @@ int main()
 {
 //	Test file manager
 //
-//	/*Client C1(123, "Batman", "Baaat1234", 4000);
-//	Client C2(245, "Superman", "Uranium985", 7000);*/
+	Client C3(101, "Mido", "Testpass1##", 800000);
+//	Client C2(245, "Superman", "Uranium985", 7000);
 //
 	FileManager f;
-	///*f.addClient(C1);
-	//f.addClient(C2);
-	//cout << endl;*/
+	//f.addClient(C1);
+	f.addClient(C3);
+	cout << endl;
 
 	vector<Client> clients = f.getAllClients();
 
