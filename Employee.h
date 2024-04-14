@@ -5,7 +5,10 @@
 #include <cmath>
 #include <regex>
 #include <exception>
+
 #include "Client.h"
+using namespace std;
+
 class Employee
 {
 protected:
@@ -127,7 +130,7 @@ public:
 		if (salary < 5000) {
 			throw runtime_error("Minimum salary requirement not met. Salary should be at least 5000.");
 		}
-
+		
 		this->salary = salary;
 	}
 

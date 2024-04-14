@@ -3,10 +3,12 @@
 #include<vector>
 #include<fstream>
 #include <sstream>
+
 #include "Employee.h"
 #include "Admin.h"
 #include "Client.h"
 using namespace std;
+
 class FilesHelperGet {
 public:
 
@@ -97,7 +99,7 @@ public:
 	static void getEmployees() {
 		string  fileName;
 		fileName = "Employee.txt";
-		std::ifstream employeesFile(fileName);
+		ifstream employeesFile(fileName);
 		string data;
 		string line;
 
@@ -119,7 +121,7 @@ public:
 	static void getAdmins() {
 		string  fileName;
 		fileName = "Admins.txt";
-		std::ifstream adminFile(fileName);
+		ifstream adminFile(fileName);
 		string data;
 		string line;
 
@@ -182,6 +184,7 @@ public:
 			cerr << "Unable to open Clients file \n";
 		}
 	}*/
+
 
 
 };
