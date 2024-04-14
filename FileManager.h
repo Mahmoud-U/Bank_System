@@ -4,6 +4,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+
 #include "Client.h"
 #include "Employee.h"
 #include "Admin.h"
@@ -66,7 +67,7 @@ public:
 	{
 		vector<Client> clients;
 		ifstream file("Clients.txt", ios::in);
-		if (file.is_open())
+		if (file.is_open()) 
 		{
 			string line;
 			while (getline(file, line)) 
@@ -75,8 +76,7 @@ public:
 			}
 			file.close();
 		}
-		else
-		{
+		else {
 			cerr << "Unable to open the file \n";
 		}
 
@@ -92,14 +92,7 @@ public:
 			string line;
 			while (getline(file, line))
 			{
-				stringstream ss(line);
-				string idstr, name, password, salaryStr;
-				if (getline(ss, idstr, '$') && getline(ss, name, '$') && getline(ss, password, '$') && getline(ss, salaryStr, '$'))
-				{
-					int id = stoi(idstr);
-					double salary = stod(salaryStr);
-					employees.emplace_back(id, name, password, salary);
-				}
+				employees.push_back(Parser::parseToEmployee(line));
 			}
 			file.close();
 		}
@@ -114,20 +107,13 @@ public:
 	vector<Admin> getAllAdmins()
 	{
 		vector<Admin> admins;
-		ifstream file("Employee.txt", ios::in);
+		ifstream file("Admins.txt", ios::in);
 		if (file.is_open())
 		{
 			string line;
 			while (getline(file, line))
 			{
-				stringstream ss(line);
-				string idstr, name, password, salaryStr;
-				if (getline(ss, idstr, '$') && getline(ss, name, '$') && getline(ss, password, '$') && getline(ss, salaryStr, '$'))
-				{
-					int id = stoi(idstr);
-					double salary = stod(salaryStr);
-					admins.emplace_back(id, name, password, salary);
-				}
+				admins.push_back(Parser::parseToAdmin(line));
 			}
 			file.close();
 		}
@@ -140,30 +126,38 @@ public:
 	}
 
 	//Remove
-	void removeData(string fileName)
-	{
-		ofstream file(fileName, ios::trunc);
-		file.close();
-	}
 
 	void removeAllClients() override
 	{
 		ofstream file("Clients.txt", ios::trunc);
-		file.close();
-		removeData("Clients.txt");
 		cout << "All Clients Removed \n";
+		file.close();
+		
+		if (!file) {
+			cerr << "Unable to clear all clients \n";
+		}
 	}
 
 	void removeAllEmployees()
 	{
-		removeData("Employee.txt");
+		ofstream file("Employee.txt", ios::trunc);
 		cout << "All Employees Removed \n";
+		file.close();
+
+		if (!file) {
+			cerr << "Unable to clear all employees \n";
+		}
 	}
 
 	void removeAllAdmins()
 	{
-		removeData("Admins.txt");
+		ofstream file("Admins.txt", ios::trunc);
 		cout << "All Admins Removed \n";
+		file.close();
+
+		if (!file) {
+			cerr << "Unable to clear all admins \n";
+		}
 	}
 
 	//Display

@@ -40,7 +40,7 @@ public:
 	}
 
 	static int getLastID(const string& fileName) {
-		std::ifstream inputFile(fileName);
+		ifstream inputFile(fileName);
 		string data;
 		string line;
 		int firstn = -1;
@@ -49,7 +49,7 @@ public:
 			while (getline(inputFile, line)) {
 				data = line;
 			}
-			std::istringstream iss(data);
+			istringstream iss(data);
 			int number;
 			if (iss >> number) {
 				firstn = number;
