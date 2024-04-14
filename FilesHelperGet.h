@@ -2,6 +2,7 @@
 #include<iostream>
 #include<vector>
 #include<fstream>
+#include <sstream>
 #include "Employee.h"
 #include "Admin.h"
 #include "Client.h"
@@ -17,7 +18,7 @@ public:
 	*/
 
 	static string getLast(const string& fileName) {
-		std::ifstream inputFile(fileName);
+		ifstream inputFile(fileName);
 		string data;
 		string line;
 
@@ -37,6 +38,7 @@ public:
 		return data;
 
 	}
+
 	static int getLastID(const string& fileName) {
 		std::ifstream inputFile(fileName);
 		string data;
@@ -67,10 +69,11 @@ public:
 
 
 	}
+	
 	static void getClients() {
 		string  fileName;
 		fileName = "Clients.txt";
-		std::ifstream clientsFile(fileName);
+		ifstream clientsFile(fileName);
 		string data;
 		string line;
 
@@ -90,6 +93,7 @@ public:
 
 
 	}
+
 	static void getEmployees() {
 		string  fileName;
 		fileName = "Employee.txt";
@@ -111,6 +115,7 @@ public:
 			cerr << "Error opening file";
 		}
 	}
+
 	static void getAdmins() {
 		string  fileName;
 		fileName = "Admins.txt";

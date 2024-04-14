@@ -23,20 +23,22 @@ int main()
 //	/*Client C1(123, "Batman", "Baaat1234", 4000);
 //	Client C2(245, "Superman", "Uranium985", 7000);*/
 //
-	//FileManager f;
+	FileManager f;
 	///*f.addClient(C1);
 	//f.addClient(C2);
 	//cout << endl;*/
 
-	//vector<Client> clients = f.getAllClients();
+	vector<Client> clients = f.getAllClients();
 
-	//cout << "Clients : \n";
-	//for (Client& client : clients)
-	//{
-	//	cout << client.getId() << client.getName() << client.getPassword() << client.getBalance() << endl;
-	//}
-
-	//cout << "\n===================================\n";
+	cout << "Clients : \n";
+	for (Client& client : clients)
+	{
+		cout << "Client ID : " << client.getId() << endl;
+		cout << "Name : " << client.getName() << endl;
+		cout << "Password : " << client.getPassword() << endl;
+		cout << ", Balance : " << client.getBalance() << endl;
+		cout << "\n===================================\n";
+	}
 
 	/*showMenu();*/
 
@@ -83,7 +85,7 @@ int main()
 	cout << "\n===================================\n";*/
 
 	//Test file helper get 
-	cout << "get data from test file:" << endl;
+	/*cout << "get data from test file:" << endl;
 	cout << "contents:" << endl;
     cout << FilesHelperGet::getLast("TEST.txt");
 	cout << "**********************************************\n";
@@ -102,7 +104,7 @@ int main()
 	cout << "get last id from file:" << endl;
 	cout << "contents:" << endl;
 	cout << FilesHelperGet::getLastID("TEST.txt");
-	cout << "**********************************************\n";
+	cout << "**********************************************\n";*/
 	
 
 

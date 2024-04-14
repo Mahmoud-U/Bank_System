@@ -135,6 +135,7 @@
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="FilesHelperGet.cpp" />
     <ClCompile Include="FilesHelperSave.cpp" />
+    <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Person.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +146,7 @@
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="FilesHelperGet.h" />
     <ClInclude Include="FilesHelperSave.h" />
+    <ClInclude Include="Parser.h" />
     <ClInclude Include="Person.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

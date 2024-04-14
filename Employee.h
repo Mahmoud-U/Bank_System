@@ -10,6 +10,10 @@ class Employee : public Person
 {
 protected:
 	double salary;
+
+	// Declare Admin as a friend class to allow access to protected members
+	friend class Admin;
+
 public:
 	Employee()
 	{

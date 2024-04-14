@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 #include "Client.h"
 #include "Employee.h"
 #include "Admin.h"
@@ -63,15 +64,20 @@ public:
 	//Get
 	vector<Client> getAllClients()
 	{
-		vector<Client> getAllClientsVector;
-		Client client;
+		vector<Client> clients;
 		ifstream file("Clients.txt", ios::in);
 		if (file.is_open())
 		{
 			string line;
-			while (getline(file, line))
+			while (getline(file, line)) 
 			{
-				getAllClientsVector.push_back(client);
+				stringstream ss(line);
+				string idstr, name, password, balanceStr;
+				if (getline(ss, idstr, '$') && getline(ss, name, '$') && getline(ss, password, '$') && getline(ss, balanceStr, '$')) {
+					int id = stoi(idstr);
+					double balance = stod(balanceStr);
+					clients.emplace_back(id, name, password, balance);
+				}
 			}
 			file.close();
 		}
@@ -80,20 +86,26 @@ public:
 			cerr << "Unable to open the file \n";
 		}
 
-		return getAllClientsVector;
+		return clients;
 	}
 
 	vector<Employee> getAllEmployees()
 	{
-		vector<Employee> getAllEmployeesVector;
-		Employee employee;
+		vector<Employee> employees;
 		ifstream file("Employee.txt", ios::in);
 		if (file.is_open())
 		{
 			string line;
 			while (getline(file, line))
 			{
-				getAllEmployeesVector.push_back(employee);
+				stringstream ss(line);
+				string idstr, name, password, balanceStr, salaryStr;
+				if (getline(ss, idstr, '$') && getline(ss, name, '$') && getline(ss, password, '$') && getline(ss, balanceStr, '$') && getline(ss, salaryStr, '$')) {
+					int id = stoi(idstr);
+					double balance = stod(balanceStr);
+					double salary = stod(salaryStr);
+					employees.emplace_back(id, name, password, balance, salary);
+				}
 			}
 			file.close();
 		}
@@ -102,20 +114,26 @@ public:
 			cerr << "Unable to open the file \n";
 		}
 
-		return getAllEmployeesVector;
+		return employees;
 	}
 
 	vector<Admin> getAllAdmins()
 	{
-		vector<Admin> getAllAdminsVector;
-		Admin admin;
-		ifstream file("Admins.txt", ios::in);
+		vector<Admin> admins;
+		ifstream file("Employee.txt", ios::in);
 		if (file.is_open())
 		{
 			string line;
 			while (getline(file, line))
 			{
-				getAllAdminsVector.push_back(admin);
+				stringstream ss(line);
+				string idstr, name, password, balanceStr, salaryStr;
+				if (getline(ss, idstr, '$') && getline(ss, name, '$') && getline(ss, password, '$') && getline(ss, balanceStr, '$') && getline(ss, salaryStr, '$')) {
+					int id = stoi(idstr);
+					double balance = stod(balanceStr);
+					double salary = stod(salaryStr);
+					admins.emplace_back(id, name, password, balance, salary);
+				}
 			}
 			file.close();
 		}
@@ -124,7 +142,7 @@ public:
 			cerr << "Unable to open the file \n";
 		}
 
-		return getAllAdminsVector;
+		return admins;
 	}
 
 	//Remove
