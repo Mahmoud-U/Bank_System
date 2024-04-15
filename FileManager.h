@@ -14,25 +14,12 @@ using namespace std;
 
 class FileManager : public DataSourceInterface
 {
-protected:
-	friend class FilesHelperGet;
 public:
 				// Add
 
 	void addClient(Client& c) override
 	{
-		// Stream class to write on files
-		ofstream myFile("Clients.txt", ios::app);
-
-		if (myFile.is_open())
-		{
-			myFile << c.getId() << "$" << c.getName() << "$" << c.getPassword() << "$" << c.getBalance() << endl;
-
-			cout << "Client Information Saved \n";
-			myFile.close();
-		}
-		else
-			cerr << "Unable to open the file \n";
+		FilesHelperGet::saveClient(c);
 	}
 
 	void addEmployee(Employee& e) override
@@ -89,7 +76,7 @@ public:
 
 				//Remove
 
-	/*void removeAllClients() override
+	void removeAllClients() override
 	{
 		FilesHelperGet::clearFile("Clients.txt", "New Client.txt");
 	}
@@ -102,7 +89,7 @@ public:
 	void removeAllAdmins()
 	{
 		FilesHelperGet::clearFile("Admins.txt", "New Admin.txt");
-	}*/
+	}
 
 	//Display
 	/*void displayVector()

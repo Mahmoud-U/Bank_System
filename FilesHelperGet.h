@@ -20,6 +20,22 @@ public:
 	-getEmployees function returns the content of employees file the function doesn't take any parameters
 	-getAdmins function returns the content of Admins file the function doesn't take any parameters
 	*/
+					//Get
+
+	static int getLast(string fileName)
+	{
+		int id{};
+		ifstream file(fileName);
+		if (file.is_open()) {
+			file >> id;
+			file.close();
+		}
+		else {
+			cerr << "Unable to get data from the file \n";
+		}
+
+		return id;
+	}
 
 	static string getLast(const string& fileName) {
 		ifstream inputFile(fileName);
@@ -60,11 +76,8 @@ public:
 
 
 			}
-
 			inputFile.close();
 			cout << "data from file: " << fileName << endl;
-
-
 		}
 		else {
 			cerr << "Error opening file";
@@ -74,7 +87,10 @@ public:
 
 	}
 	
-	static void getClients() {
+	static void getClients() 
+	{
+		vector<Client> clients;
+
 		string  fileName;
 		fileName = "Clients.txt";
 		ifstream clientsFile(fileName);
@@ -83,7 +99,6 @@ public:
 
 		if (clientsFile.is_open()) {
 
-			vector<Client> clients;
 			while (getline(clientsFile, line)) {
 				clients.push_back(Parser::parseToClient(line));
 			}
@@ -99,7 +114,10 @@ public:
 
 	}
 
-	static void getEmployees() {
+	static void getEmployees() 
+	{
+		vector<Employee> employees;
+
 		string  fileName;
 		fileName = "Employee.txt";
 		ifstream employeesFile(fileName);
@@ -109,19 +127,21 @@ public:
 		if (employeesFile.is_open()) {
 
 			while (getline(employeesFile, line)) {
-				cout << line << endl;
+				employees.push_back(Parser::parseToEmployee(line));
 			}
 
 			employeesFile.close();
 			cout << "data from file: " << fileName << endl;
-
 		}
 		else {
 			cerr << "Error opening file";
 		}
 	}
 
-	static void getAdmins() {
+	static void getAdmins() 
+	{
+		vector<Admin> admins;
+
 		string  fileName;
 		fileName = "Admins.txt";
 		ifstream adminFile(fileName);
@@ -131,7 +151,7 @@ public:
 		if (adminFile.is_open()) {
 
 			while (getline(adminFile, line)) {
-				cout << line << endl;
+				admins.push_back(Parser::parseToAdmin(line));
 			}
 
 			adminFile.close();
@@ -140,6 +160,56 @@ public:
 		}
 		else {
 			cerr << "Error opening file";
+		}
+	}
+
+					//Save
+
+	static void saveLast(string fileName, int id)
+	{
+		ofstream file(fileName);
+		if (file.is_open()) {
+			file << id;
+			file.close();
+		}
+		else {
+			cerr << "Unable to save in the file \n";
+		}
+	}
+
+	static void saveClient(Client c)
+	{
+		ofstream file("Clients.txt", ios::app);
+		if (file.is_open())
+		{
+			file << c.getId() << "$" << c.getName() << "$" << c.getPassword() << "$" << c.getBalance() << endl;
+			file.close();
+			cout << "Client Information Saved \n";
+		}
+		else
+		{
+			cerr << "Unable to open Clients file \n";
+		}
+	}
+
+					// Clear
+				
+	static void clearFile(string fileName, string lastIdFile) {
+		ofstream file(fileName, ios::out);
+		file.close();
+
+		ofstream idfilec(lastIdFile, ios::out);
+		idfilec.close();
+
+		ofstream idfile(lastIdFile);
+		if (idfile.is_open())
+		{
+			idfile << 0;
+			cout << " Information is cleared \n";
+		}
+		else
+		{
+			cerr << "Unable to clear data \n";
 		}
 	}
 
@@ -273,72 +343,5 @@ public:
 	//	{
 	//		cerr << "Unable To Clear Data \n";
 	//	}
-	//}
-
-	//.....................................................................
-	// Mahmoud Attempt
-
-static void saveLast(string fileName, int id)
-{
-	ofstream file(fileName);
-	if (file.is_open()) {
-		file << id;
-		file.close();
-	}
-	else {
-		cerr << "Unable to save in the file \n";
-	}
-}
-
-/*static int getLast(string fileName)
-{
-	int id{};
-	ifstream file(fileName);
-	if (file.is_open()) {
-		file >> id;
-		file.close();
-	}
-	else {
-		cerr << "Unable to get data from the file \n";
-	}
-
-	return id;
-}*/
-
-static void saveClient(Client c)
-{
-	ofstream file("Clients.txt", ios::app);
-	if (file.is_open())
-	{
-		file << c.getId() << "$" << c.getName() << "$" << c.getPassword() << "$" << c.getBalance() << endl;
-		file.close();
-		cout << "Client Information Saved \n";
-	}
-	else
-	{
-		cerr << "Unable to open Clients file \n";
-	}
-}
-
-static void clearFile(string fileName, string lastIdFile) {
-	ofstream file(fileName, ios::out);
-	file.close();
-
-	ofstream idfilec(lastIdFile, ios::out);
-	idfilec.close();
-	ofstream idfile(lastIdFile);
-	if (idfile.is_open())
-	{
-		idfile << 0;
-		cout << " Information is cleared \n";
-	}
-	else
-	{
-		cerr << "Unable to clear data \n";
-	}
-
-
-}
-
-
+	//}	
 };
