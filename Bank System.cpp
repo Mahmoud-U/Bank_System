@@ -19,17 +19,25 @@ using namespace std;
 
 int main()
 {
+
+	// Test inherited functions
+	/*Client c1(500, "Medhat", "TestTest2225", 50000);
+
+	Admin a;
+	a.addClient(c1);*/
+	
+
 //	Test file manager
 //
 	//Client C3(102, "Amigo", "Testingpass1##", 600000);
 //	Client C2(245, "Superman", "Uranium985", 7000);
 //
-	FileManager f;
+	//FileManager f;
 	//f.addClient(C1);
 	//f.addClient(C3);
 	//cout << endl;
 
-	vector<Client> clients = f.getAllClients();
+	/*vector<Client> clients = f.getAllClients();
 
 	cout << "Clients : \n";
 	for (Client& client : clients)
@@ -37,7 +45,7 @@ int main()
 		cout << "Client ID : " << client.getId() << ", Name : " << client.getName()
 			<< ", Password : " << client.getPassword() << ", Balance : " << client.getBalance() << endl;
 		cout << "=========================================\n";
-	}
+	}*/
 
 	//f.removeAllClients();
 

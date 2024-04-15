@@ -50,13 +50,15 @@ public:
  //       }
  //   }
 
-    
-
-    void addEmployee(Employee& employee) {
+                // Functions        
+            
+    void addEmployee(Employee& employee) 
+    {
         employees.push_back(&employee);
     }
 
-    Employee* searchEmployee(int id) {
+    Employee* searchEmployee(int id) 
+    {
         for (Employee* employee : employees) {
             if (employee->id == id) {
                 return employee;
@@ -65,7 +67,8 @@ public:
         return nullptr;
     }
 
-    void editEmployee(int id, string name, string password, double salary) {
+    void editEmployee(int id, string name, string password, double salary) 
+    {
         Employee* employee = searchEmployee(id);
         if (employee) {
             employee->name = name;
@@ -78,7 +81,8 @@ public:
         }
     }
 
-    void listEmployees() {
+    void listEmployees() 
+    {
         cout << "List of Employees:" << endl;
         for (Employee* employee : employees) {
             cout << "ID: " << employee->id << ", Name: " << employee->name << ", Salary: $" << employee->salary << endl;

@@ -152,7 +152,9 @@ public:
 		return this->salary = salary;
 	}
 
-	void addClient(Client& client)
+				// Functions
+
+	void addClient(Client& client) 
 	{
 		clients.push_back(&client);
 	}
