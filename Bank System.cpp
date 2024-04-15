@@ -96,7 +96,7 @@ int main()
 	//Test file helper get 
 
 	//Test file helper get 
-	cout << "get data from test file:" << endl;
+	/*cout << "get data from test file:" << endl;
 	cout << "contents:" << endl;
 	cout << FilesHelperGet::getLast("TEST.txt");
 	cout << "**********************************************\n";
@@ -125,7 +125,7 @@ int main()
 	cout << "save  id to file:" << endl;
 	cout << "contents:" << endl;
 	FilesHelperGet::saveLast("TEST.txt", 2);
-	cout << "**********************************************\n";
+	cout << "**********************************************\n";*/
 	
 
 

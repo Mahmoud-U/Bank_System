@@ -1,7 +1,7 @@
-#include<string>
-#include<iostream>
-#include<vector>
-#include<fstream>
+#include <string>
+#include <iostream>
+#include <vector>
+#include <fstream>
 #include <sstream>
 
 #include "Employee.h"
@@ -83,8 +83,9 @@ public:
 
 		if (clientsFile.is_open()) {
 
+			vector<Client> clients;
 			while (getline(clientsFile, line)) {
-				cout << line << endl;
+				clients.push_back(Parser::parseToClient(line));
 			}
 
 			clientsFile.close();

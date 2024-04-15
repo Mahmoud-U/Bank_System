@@ -9,12 +9,13 @@
 #include "Employee.h"
 #include "Admin.h"
 #include "DataSourceInterface.h"
-#include "Parser.h"
 #include "FilesHelperGet.h"
 using namespace std;
 
 class FileManager : public DataSourceInterface
 {
+protected:
+	friend class FilesHelperGet;
 public:
 				// Add
 
@@ -68,64 +69,22 @@ public:
 
 	vector<Client> getAllClients()
 	{
-		vector<Client> clients;
-		ifstream file("Clients.txt", ios::in);
-		if (file.is_open()) 
-		{
-			string line;
-			while (getline(file, line)) 
-			{
-				clients.push_back(Parser::parseToClient(line));
-			}
-			file.close();
-		}
-		else {
-			cerr << "Unable to open the file \n";
-		}
+		FilesHelperGet::getClients();
 
-		return clients;
+		return getAllClients();
 	}
 
 	vector<Employee> getAllEmployees()
 	{
-		vector<Employee> employees;
-		ifstream file("Employee.txt", ios::in);
-		if (file.is_open())
-		{
-			string line;
-			while (getline(file, line))
-			{
-				employees.push_back(Parser::parseToEmployee(line));
-			}
-			file.close();
-		}
-		else
-		{
-			cerr << "Unable to open the file \n";
-		}
+		FilesHelperGet::getEmployees();
 
-		return employees;
+		return getAllEmployees();
 	}
 
 	vector<Admin> getAllAdmins()
 	{
-		vector<Admin> admins;
-		ifstream file("Admins.txt", ios::in);
-		if (file.is_open())
-		{
-			string line;
-			while (getline(file, line))
-			{
-				admins.push_back(Parser::parseToAdmin(line));
-			}
-			file.close();
-		}
-		else
-		{
-			cerr << "Unable to open the file \n";
-		}
-
-		return admins;
+		FilesHelperGet::getAdmins();
+		return getAllAdmins();
 	}
 
 				//Remove
