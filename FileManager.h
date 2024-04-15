@@ -24,17 +24,7 @@ public:
 
 	void addEmployee(Employee& e) override
 	{
-		ofstream myFile("Employee.txt", ios::app);
-
-		if (myFile.is_open())
-		{
-			myFile << e.getId() << "$" << e.getName() << "$" << e.getPassword() << "$" << e.getSalary() << endl;
-
-			cout << "Employee Information Saved \n";
-			myFile.close();
-		}
-		else
-			cerr << "Unable to open the file \n";
+		FilesHelperGet::saveEmployee("Employee.txt", "New Employee.txt", e);
 	}
 
 	void addAdmin(Admin& a) override

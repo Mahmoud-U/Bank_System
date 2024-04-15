@@ -37,14 +37,17 @@ public:
 		return id;
 	}
 
-	static string getLast(const string& fileName) {
+	static string getLast(const string& fileName) 
+	{
 		ifstream inputFile(fileName);
 		string data;
 		string line;
 
-		if (inputFile.is_open()) {
+		if (inputFile.is_open()) 
+		{
 
-			while (getline(inputFile, line)) {
+			while (getline(inputFile, line)) 
+			{
 				cout << line << endl;
 			}
 
@@ -56,26 +59,28 @@ public:
 			cerr << "Error opening file";
 		}
 		return data;
-
 	}
 
-	static int getLastID(const string& fileName) {
+	static int getLastID(const string& fileName) 
+	{
 		ifstream inputFile(fileName);
 		string data;
 		string line;
 		int firstn = -1;
-		if (inputFile.is_open()) {
-
+		if (inputFile.is_open()) 
+		{
 			while (getline(inputFile, line)) {
 				data = line;
 			}
+
 			istringstream iss(data);
 			int number;
-			if (iss >> number) {
+
+			if (iss >> number) 
+			{
 				firstn = number;
-
-
 			}
+
 			inputFile.close();
 			cout << "data from file: " << fileName << endl;
 		}
@@ -83,13 +88,11 @@ public:
 			cerr << "Error opening file";
 		}
 		return firstn;
-
-
 	}
 	
 	static void getClients() 
 	{
-		vector<Client> clients;
+		vector < Client > clients;
 
 		string  fileName;
 		fileName = "Clients.txt";
@@ -97,21 +100,18 @@ public:
 		string data;
 		string line;
 
-		if (clientsFile.is_open()) {
-
+		if (clientsFile.is_open()) 
+		{
 			while (getline(clientsFile, line)) {
 				clients.push_back(Parser::parseToClient(line));
 			}
 
 			clientsFile.close();
 			cout << "data from file: " << fileName << endl;
-
 		}
 		else {
 			cerr << "Error opening file";
 		}
-
-
 	}
 
 	static void getEmployees() 
@@ -148,15 +148,14 @@ public:
 		string data;
 		string line;
 
-		if (adminFile.is_open()) {
-
+		if (adminFile.is_open()) 
+		{
 			while (getline(adminFile, line)) {
 				admins.push_back(Parser::parseToAdmin(line));
 			}
 
 			adminFile.close();
 			cout << "data from file: " << fileName << endl;
-
 		}
 		else {
 			cerr << "Error opening file";
@@ -189,6 +188,24 @@ public:
 		else
 		{
 			cerr << "Unable to open Clients file \n";
+		}
+	}
+
+	static void saveEmployee(string fileName, string lastIdFile, Employee e)
+	{
+		ofstream file(fileName, ios::app);
+		if (file.is_open())
+		{
+			int result = FilesHelperGet::getLastID(lastIdFile);
+			file << result + 1;
+			file << "$" << e.getName() << "$" << e.getPassword() << "$" << e.getSalary() << endl;
+			file.close();
+			cout << "Employee Information Saved \n";
+		}
+
+		else
+		{
+			cerr << "Unable to open Employee file \n";
 		}
 	}
 
