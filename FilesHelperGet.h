@@ -274,5 +274,70 @@ public:
 	//	}
 	//}
 
+	//.....................................................................
+	// Mahmoud Attempt
+
+static void saveLast(string fileName, int id)
+{
+	ofstream file(fileName);
+	if (file.is_open()) {
+		file << id;
+		file.close();
+	}
+	else {
+		cerr << "Unable to save in the file \n";
+	}
+}
+
+/*static int getLast(string fileName)
+{
+	int id{};
+	ifstream file(fileName);
+	if (file.is_open()) {
+		file >> id;
+		file.close();
+	}
+	else {
+		cerr << "Unable to get data from the file \n";
+	}
+
+	return id;
+}*/
+
+static void saveClient(Client c)
+{
+	ofstream file("Clients.txt", ios::app);
+	if (file.is_open())
+	{
+		file << c.getId() << "$" << c.getName() << "$" << c.getPassword() << "$" << c.getBalance() << endl;
+		file.close();
+		cout << "Client Information Saved \n";
+	}
+	else
+	{
+		cerr << "Unable to open Clients file \n";
+	}
+}
+
+static void clearFile(string fileName, string lastIdFile) {
+	ofstream file(fileName, ios::out);
+	file.close();
+
+	ofstream idfilec(lastIdFile, ios::out);
+	idfilec.close();
+	ofstream idfile(lastIdFile);
+	if (idfile.is_open())
+	{
+		idfile << 0;
+		cout << " Information is cleared \n";
+	}
+	else
+	{
+		cerr << "Unable to clear data \n";
+	}
+
+
+}
+
 
 };

@@ -94,9 +94,11 @@ int main()
 	cout << "\n===================================\n";*/
 
 	//Test file helper get 
-	/*cout << "get data from test file:" << endl;
+
+	//Test file helper get 
+	cout << "get data from test file:" << endl;
 	cout << "contents:" << endl;
-    cout << FilesHelperGet::getLast("TEST.txt");
+	cout << FilesHelperGet::getLast("TEST.txt");
 	cout << "**********************************************\n";
 	cout << "get data from clients file:" << endl;
 	cout << "contents:" << endl;
@@ -113,7 +115,17 @@ int main()
 	cout << "get last id from file:" << endl;
 	cout << "contents:" << endl;
 	cout << FilesHelperGet::getLastID("TEST.txt");
-	cout << "**********************************************\n";*/
+	cout << "**********************************************\n";
+	cout << "**********************************************\n";
+	cout << "clear last id from file:" << endl;
+	cout << "contents:" << endl;
+	FilesHelperGet::clearFile("TEST.txt", "testid.txt");
+	cout << "**********************************************\n";
+	cout << "**********************************************\n";
+	cout << "save  id to file:" << endl;
+	cout << "contents:" << endl;
+	FilesHelperGet::saveLast("TEST.txt", 2);
+	cout << "**********************************************\n";
 	
 
 
