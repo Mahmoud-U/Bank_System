@@ -7,9 +7,11 @@
 #include "Employee.h"
 #include "Admin.h"
 #include "Client.h"
+#include "Parser.h"
 using namespace std;
 
-class FilesHelperGet {
+class FilesHelperGet 
+{
 public:
 
 	/*this class is for the fet functions only, saving functions are put in different class
@@ -141,50 +143,136 @@ public:
 	}
 
 	//.....................................................................
-	// Mahmoud Attempt
+	 // Mahmoud Attempt
 
-	/*static void saveLast(string fileName, int id)
-	{
-		ofstream file(fileName);
-		if (file.is_open()) {
-			file << id;
-			file.close();
-		}
-		else {
-			cerr << "Unable to save in the file \n";
-		}
-	}
+	//static void saveLast(string fileName, int id)
+	//{
+	//	ofstream file(fileName, ios::app);
+	//	if (file.is_open()) {
+	//		file << id;
+	//		file.close();
+	//	}
+	//	else {
+	//		cerr << "Unable to save in the file \n";
+	//	}
+	//}
 
-	static int getLast(string fileName)
-	{
-		int id{};
-		ifstream file(fileName);
-		if (file.is_open()) {
-			file >> id;
-			file.close();
-		}
-		else {
-			cerr << "Unable to get data from the file \n";
-		}
+	//static int getLast(string fileName)
+	//{
+	//	int id{};
+	//	ifstream file(fileName);
+	//	if (file.is_open()) {
+	//		file >> id;
+	//		file.close();
+	//	}
+	//	else {
+	//		cerr << "Unable to get data from the file \n";
+	//	}
 
-		return id;
-	}
+	//	return id;
+	//}
 
-	static void saveClient(Client c)
-	{
-		ofstream file("Clients.txt", ios::app);
-		if (file.is_open()) 
-		{
-			file << c.getId() << "$" << c.getName() << "$" << c.getPassword() << "$" << c.getBalance() << endl;
-			file.close();
-			cout << "Client Information Saved \n";
-		}
-		else
-		{
-			cerr << "Unable to open Clients file \n";
-		}
-	}*/
+	//static void saveClient(Client c)
+	//{
+	//	ofstream file("Clients.txt", ios::app);
+	//	if (file.is_open()) 
+	//	{
+	//		file << c.getId() << "$" << c.getName() << "$" << c.getPassword() << "$" << c.getBalance() << endl;
+	//		file.close();
+	//		cout << "Client Information Saved \n";
+	//	}
+	//	else
+	//	{
+	//		cerr << "Unable to open Clients file \n";
+	//	}
+	//}
 
+	//static void saveEmployee(string fileName, string lastIdFile, Employee e)
+	//{
+	//	int LastId = getLast("New Employee.txt");
+	//	LastId++;
+
+	//	saveLast("New Employee.txt", LastId);
+
+	//	ofstream file("Employee.txt", ios::app);
+	//	if (file.is_open())
+	//	{
+	//		file << LastId << "$" << e.getName() << "$" << e.getPassword() << "$" << e.getSalary() << endl;
+	//		file.close();
+	//		cout << "Employee Information Saved \n";
+	//	}
+	//}
+
+	//static void getClients()
+	//{
+	//	vector<Client> clients;
+	//	ifstream file("Clients.txt");
+
+	//	if (file.is_open())
+	//	{
+	//		string line;
+	//		while (getline(file, line))
+	//		{
+	//			clients.push_back(Parser::parseToClient(line));
+	//		}
+	//		file.close();
+	//	}
+	//	else {
+	//		cerr << "Unable to open the file \n";
+	//	}
+	//}
+
+	//static void getEmployees()
+	//{
+	//	vector<Employee> employees;
+	//	ifstream file("Employee.txt");
+
+	//	if (file.is_open())
+	//	{
+	//		string line;
+	//		while (getline(file, line))
+	//		{
+	//			employees.push_back(Parser::parseToEmployee(line));
+	//		}
+	//		file.close();
+	//	}
+	//	else {
+	//		cerr << "Unable to open the file \n";
+	//	}
+	//}
+
+	//static void getAdmins()
+	//{
+	//	vector<Admin> admins;
+	//	ifstream file("Admins.txt");
+
+	//	if (file.is_open())
+	//	{
+	//		string line;
+	//		while (getline(file, line))
+	//		{
+	//			admins.push_back(Parser::parseToAdmin(line));
+	//		}
+	//		file.close();
+	//	}
+	//	else {
+	//		cerr << "Unable to open the file \n";
+	//	}
+	//}
+
+	//static void clearFile(string fileName, string lastIdFile)
+	//{
+	//	ofstream file(fileName, ios::trunc);
+	//	ofstream fileanother(lastIdFile, ios::trunc);
+	//	file.close();
+	//	cout << "Information Removed Successfully \n";
+	//	saveLast(lastIdFile, 0);
+
+	//	if (!file)
+	//	{
+	//		cerr << "Unable To Clear Data \n";
+	//	}
+	//}
 
 
 };

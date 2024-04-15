@@ -10,6 +10,7 @@
 #include "Admin.h"
 #include "DataSourceInterface.h"
 #include "Parser.h"
+#include "FilesHelperGet.h"
 using namespace std;
 
 class FileManager : public DataSourceInterface
@@ -129,38 +130,20 @@ public:
 
 				//Remove
 
-	void removeAllClients() override
+	/*void removeAllClients() override
 	{
-		ofstream file("Clients.txt", ios::trunc);
-		file.close();
-		cout << "All Clients Removed \n";
-		
-		if (!file) {
-			cerr << "Unable to clear all clients \n";
-		}
+		FilesHelperGet::clearFile("Clients.txt", "New Client.txt");
 	}
 
 	void removeAllEmployees()
 	{
-		ofstream file("Employee.txt", ios::trunc);
-		file.close();
-		cout << "All Employees Removed \n";
-
-		if (!file) {
-			cerr << "Unable to clear all employees \n";
-		}
+		FilesHelperGet::clearFile("Employee.txt", "New Employee.txt");
 	}
 
 	void removeAllAdmins()
 	{
-		ofstream file("Admins.txt", ios::trunc);
-		file.close();
-		cout << "All Admins Removed \n";
-
-		if (!file) {
-			cerr << "Unable to clear all admins \n";
-		}
-	}
+		FilesHelperGet::clearFile("Admins.txt", "New Admin.txt");
+	}*/
 
 	//Display
 	/*void displayVector()
