@@ -6,7 +6,7 @@
 #include <sstream>
 
 #include "DataSourceInterface.h"
-#include "FilesHelperGet.h"
+#include "FilesHelper.h"
 using namespace std;
 
 class FileManager : public DataSourceInterface
@@ -16,12 +16,12 @@ public:
 
 	void addClient(Client& c) override
 	{
-		FilesHelperGet::saveClient(c);
+		FilesHelper::saveClient(c);
 	}
 
 	void addEmployee(Employee& e) override
 	{
-		FilesHelperGet::saveEmployee("Employee.txt", "New Employee.txt", e);
+		FilesHelper::saveEmployee("Employee.txt", "New Employee.txt", e);
 	}
 
 	void addAdmin(Admin& a) override
@@ -43,21 +43,21 @@ public:
 
 	vector<Client> getAllClients()
 	{
-		FilesHelperGet::getClients();
+		FilesHelper::getClients();
 
 		return getAllClients();
 	}
 
 	vector<Employee> getAllEmployees()
 	{
-		FilesHelperGet::getEmployees();
+		FilesHelper::getEmployees();
 
 		return getAllEmployees();
 	}
 
 	vector<Admin> getAllAdmins()
 	{
-		FilesHelperGet::getAdmins();
+		FilesHelper::getAdmins();
 		return getAllAdmins();
 	}
 
@@ -65,17 +65,17 @@ public:
 
 	void removeAllClients() override
 	{
-		FilesHelperGet::clearFile("Clients.txt", "New Client.txt");
+		FilesHelper::clearFile("Clients.txt", "New Client.txt");
 	}
 
 	void removeAllEmployees()
 	{
-		FilesHelperGet::clearFile("Employee.txt", "New Employee.txt");
+		FilesHelper::clearFile("Employee.txt", "New Employee.txt");
 	}
 
 	void removeAllAdmins()
 	{
-		FilesHelperGet::clearFile("Admins.txt", "New Admin.txt");
+		FilesHelper::clearFile("Admins.txt", "New Admin.txt");
 	}
 
 	//Display

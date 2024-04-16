@@ -133,8 +133,7 @@
     <ClCompile Include="DataSourceInterface.cpp" />
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="FileManager.cpp" />
-    <ClCompile Include="FilesHelperGet.cpp" />
-    <ClCompile Include="FilesHelperSave.cpp" />
+    <ClCompile Include="FilesHelper.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Person.cpp" />
   </ItemGroup>
@@ -144,8 +143,7 @@
     <ClInclude Include="DataSourceInterface.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="FileManager.h" />
-    <ClInclude Include="FilesHelperGet.h" />
-    <ClInclude Include="FilesHelperSave.h" />
+    <ClInclude Include="FilesHelper.h" />
     <ClInclude Include="Parser.h" />
     <ClInclude Include="Person.h" />
   </ItemGroup>

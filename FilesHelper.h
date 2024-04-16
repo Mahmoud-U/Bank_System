@@ -10,7 +10,7 @@
 #include "Parser.h"
 using namespace std;
 
-class FilesHelperGet 
+class FilesHelper
 {
 public:
 
@@ -196,7 +196,7 @@ public:
 		ofstream file(fileName, ios::app);
 		if (file.is_open())
 		{
-			int result = FilesHelperGet::getLastID(lastIdFile);
+			int result = FilesHelper::getLastID(lastIdFile);
 			file << result + 1;
 			file << "$" << e.getName() << "$" << e.getPassword() << "$" << e.getSalary() << endl;
 			file.close();
