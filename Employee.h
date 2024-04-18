@@ -173,7 +173,7 @@ public:
 	void listClient() {
 		for (Client* client : clients)
 		{
-			std::cout << "ID: " << client->getId() << ", Name: " << client->getName() << endl;
+			cout << "ID: " << client->getId() << ", Name: " << client->getName() << endl;
 		}
 	}
 

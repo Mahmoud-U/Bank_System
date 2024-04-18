@@ -18,52 +18,22 @@ using namespace std;
 
 int main()
 {
-
-	// Test inherited functions
-	/*Client c1(500, "Medhat", "TestTest2225", 50000);
-
-	Admin a;
-	a.addClient(c1);*/
-	
-
-//	Test file manager
-//
-	//Client C3(102, "Amigo", "Testingpass1##", 600000);
-//	Client C2(245, "Superman", "Uranium985", 7000);
-//
-	//FileManager f;
-	//f.addClient(C1);
-	//f.addClient(C3);
-	//cout << endl;
-
-	/*vector<Client> clients = f.getAllClients();
-
-	cout << "Clients : \n";
-	for (Client& client : clients)
-	{
-		cout << "Client ID : " << client.getId() << ", Name : " << client.getName()
-			<< ", Password : " << client.getPassword() << ", Balance : " << client.getBalance() << endl;
-		cout << "=========================================\n";
-	}*/
-
-	//f.removeAllClients();
-
 	/*showMenu();*/
 
 	//Test 1
 	/*Client C1(1, "Batman", "Baaat1234", 4000);
-	C1.Display();
-	cout << endl;
+	//C1.Display();
+	//cout << endl;
 
 	C1.Deposit(1800);
 	C1.Withdraw(2700);
 	cout << endl;
 
 	Client C2(2, "Superman", "Uranium985", 7000);
-	C2.Display();
-	cout << endl;
-	C1.Transfer_To(900, C2);
-	cout << endl;
+	//C2.Display();
+	//cout << endl;
+	//C1.Transfer_To(900, C2);
+	//cout << endl;
 
 	cout << "Client 1 ";
 	C1.Check_Balance();

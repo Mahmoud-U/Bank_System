@@ -107,7 +107,7 @@ public:
 			}
 
 			clientsFile.close();
-			cout << "data from file: " << fileName << endl;
+			//cout << "data from file: " << fileName << endl;
 		}
 		else {
 			cerr << "Error opening file";
@@ -194,11 +194,14 @@ public:
 	static void saveEmployee(string fileName, string lastIdFile, Employee e)
 	{
 		ofstream file(fileName, ios::app);
-		if (file.is_open())
+		ofstream file1(lastIdFile, ios::app);
+		if (file.is_open() && file1.is_open())
 		{
 			int result = FilesHelper::getLastID(lastIdFile);
-			file << result + 1;
+			int value = result + 1;
+			file << value;
 			file << "$" << e.getName() << "$" << e.getPassword() << "$" << e.getSalary() << endl;
+			file1 << value;
 			file.close();
 			cout << "Employee Information Saved \n";
 		}
@@ -211,12 +214,10 @@ public:
 
 					// Clear
 				
-	static void clearFile(string fileName, string lastIdFile) {
+	static void clearFile(string fileName, string lastIdFile) 
+	{
 		ofstream file(fileName, ios::out);
 		file.close();
-
-		ofstream idfilec(lastIdFile, ios::out);
-		idfilec.close();
 
 		ofstream idfile(lastIdFile);
 		if (idfile.is_open())

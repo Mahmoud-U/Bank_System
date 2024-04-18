@@ -1,6 +1,5 @@
-123$Batman$Baaat1234$4000$
-245$Superman$Uranium985$7000$
-123$Batman$Baaat1234$4000$
-245$Superman$Uranium985$7000$
-101$Mido$Testpass1##$800000
-102$Amigo$Testingpass1##$600000
+115$Ahmed$PassTest101$50000
+115$Ahmed$PassTest101$50000
+115$Ahmed$PassTest101$50000
+150$Amjad$PassTest101$80000
+150$Amjad$PassTest101$80000
