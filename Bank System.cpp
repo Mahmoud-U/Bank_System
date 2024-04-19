@@ -10,7 +10,9 @@
 #include "Client.h"
 #include "Employee.h"
 #include "Admin.h"
-#include "FileManager.h"
+//#include "Parser.h"
+#include "FilesHelper.h"
+//#include "FileManager.h"
 using namespace std;
 
 //void clearScreen();
@@ -18,7 +20,70 @@ using namespace std;
 
 int main()
 {
-	/*showMenu();*/
+
+
+
+	//FilesHelper & FileManager with Parse Admin test
+	/*Admin admin1(500, "Hens", "PasswordTest1", 100000);
+	Admin admin2(501, "Soha", "adniafu448A", 80000);
+	Admin admin3(502, "Amanda", "rhegoelorV54", 70000);
+	FileManager f;
+	f.addAdmin(admin1);
+	f.addAdmin(admin2);
+	f.addAdmin(admin3);
+	FilesHelper::getAdmins();
+	FilesHelper::clearFile("Clients.txt", "New Clients.txt");*/
+
+
+	//FilesHelper with Parse Employee test
+	/*Employee employee1(500, "Hens", "PasswordTest1", 100000);
+	Employee employee2(501, "Soha", "adniafu448A", 80000);
+	Employee employee3(502, "Amanda", "rhegoelorV54", 70000);
+	FilesHelper::saveEmployee("Employee.txt", "New Employee.txt", employee1);
+	FilesHelper::saveEmployee("Employee.txt", "New Employee.txt", employee2);
+	FilesHelper::saveEmployee("Employee.txt", "New Employee.txt", employee3);
+	FilesHelper::getEmployees();
+	FilesHelper::clearFile("Clients.txt", "New Clients.txt");*/
+
+
+	//FilesHelper with Parse Client test
+	/*Client client1(500, "Hens", "PasswordTest1", 100000);
+	Client client2(501, "Soha", "adniafu448A", 80000);
+	Client client3(502, "Amanda", "rhegoelorV54", 70000);
+	FilesHelper::saveClient(client1);
+	FilesHelper::saveClient(client2);
+	FilesHelper::saveClient(client3);
+	FilesHelper::getClients();
+	FilesHelper::clearFile("Clients.txt", "New Clients.txt");*/
+
+
+	//Parser Test
+	/*string c = "112$Amigo$PassTest22224$80000";
+	string e = "220$Emploo$PassTest22224$10000";
+	string a = "330$Adminoo$PassTest22224$15000";
+
+	Client c1 = Parser::parseToClient(c);
+	Employee e1 = Parser::parseToEmployee(e);
+	Admin a1 = Parser::parseToAdmin(a);
+
+	cout << "\nClient Details: \n";
+	cout << "ID: " << c1.getId() << endl;
+	cout << "Name: " << c1.getName() << endl;
+	cout << "Password: " << c1.getPassword() << endl;
+	cout << "Balance: " << c1.getBalance() << endl;
+
+	cout << "\nEmployee Details: \n";
+	cout << "ID: " << e1.getId() << endl;
+	cout << "Name: " << e1.getName() << endl;
+	cout << "Password: " << e1.getPassword() << endl;
+	cout << "Balance: " << e1.getSalary() << endl;
+
+	cout << "\nAdmin Details: \n";
+	cout << "ID: " << a1.getId() << endl;
+	cout << "Name: " << a1.getName() << endl;
+	cout << "Password: " << a1.getPassword() << endl;
+	cout << "Balance: " << a1.getSalary() << endl;*/
+
 
 	//Test 1
 	/*Client C1(1, "Batman", "Baaat1234", 4000);

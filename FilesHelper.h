@@ -37,6 +37,35 @@ public:
 		return id;
 	}
 
+	static int getLastID(const string& fileName)
+	{
+		ifstream inputFile(fileName);
+		string data;
+		string line;
+		int firstn = -1;
+		if (inputFile.is_open())
+		{
+			while (getline(inputFile, line)) {
+				data = line;
+			}
+
+			istringstream iss(data);
+			int number;
+
+			if (iss >> number)
+			{
+				firstn = number;
+			}
+
+			inputFile.close();
+		}
+		else 
+		{
+			cerr << "Error opening file";
+		}
+		return firstn;
+	}
+
 	static string getLast(const string& fileName) 
 	{
 		ifstream inputFile(fileName);
@@ -61,81 +90,64 @@ public:
 		return data;
 	}
 
-	static int getLastID(const string& fileName) 
+	static void getClients()
 	{
-		ifstream inputFile(fileName);
-		string data;
-		string line;
-		int firstn = -1;
-		if (inputFile.is_open()) 
-		{
-			while (getline(inputFile, line)) {
-				data = line;
-			}
-
-			istringstream iss(data);
-			int number;
-
-			if (iss >> number) 
-			{
-				firstn = number;
-			}
-
-			inputFile.close();
-			cout << "data from file: " << fileName << endl;
-		}
-		else {
-			cerr << "Error opening file";
-		}
-		return firstn;
-	}
-	
-	static void getClients() 
-	{
-		vector < Client > clients;
-
+		vector<Client> clients;
 		string  fileName;
 		fileName = "Clients.txt";
-		ifstream clientsFile(fileName);
-		string data;
+		ifstream employeesFile(fileName);
 		string line;
 
-		if (clientsFile.is_open()) 
+		if (employeesFile.is_open())
 		{
-			while (getline(clientsFile, line)) {
+
+			while (getline(employeesFile, line))
+			{
 				clients.push_back(Parser::parseToClient(line));
 			}
 
-			clientsFile.close();
-			//cout << "data from file: " << fileName << endl;
+			for (Client& client : clients)
+			{
+				cout << "Client ID: " << client.getId() << ", Name: " << client.getName() << ", Password: " <<
+					client.getPassword() << ", Balance: " << client.getBalance() << endl;
+				cout << "---------------------" << endl;
+			}
+			employeesFile.close();
 		}
 		else {
-			cerr << "Error opening file";
+			cerr << "Unable to open Clients file \n";
 		}
+		cout << "Clients Data From File: " << fileName << endl;
 	}
 
-	static void getEmployees() 
+	static void getEmployees()
 	{
 		vector<Employee> employees;
-
+		
 		string  fileName;
 		fileName = "Employee.txt";
 		ifstream employeesFile(fileName);
-		string data;
 		string line;
 
-		if (employeesFile.is_open()) {
-
-			while (getline(employeesFile, line)) {
+		if (employeesFile.is_open())
+		{
+			while (getline(employeesFile, line))
+			{
 				employees.push_back(Parser::parseToEmployee(line));
 			}
 
+			for (Employee& employee : employees)
+			{
+				cout << "Employee ID: " << employee.getId() << ", Name: " << employee.getName() << ", Password: " <<
+					employee.getPassword() << ", Salary: " << employee.getSalary() << endl;
+				cout << "---------------------" << endl;
+			}
 			employeesFile.close();
-			cout << "data from file: " << fileName << endl;
 		}
 		else {
-			cerr << "Error opening file";
+			cerr << "Unable to open the file \n";
 		}
+		cout << "Employee Data From File: " << fileName << endl;
 	}
 
 	static void getAdmins() 
@@ -145,7 +157,6 @@ public:
 		string  fileName;
 		fileName = "Admins.txt";
 		ifstream adminFile(fileName);
-		string data;
 		string line;
 
 		if (adminFile.is_open()) 
@@ -154,12 +165,19 @@ public:
 				admins.push_back(Parser::parseToAdmin(line));
 			}
 
+			for (Admin& admin : admins)
+			{
+				cout << "Employee ID: " << admin.getId() << ", Name: " << admin.getName() << ", Password: " <<
+					admin.getPassword() << ", Salary: " << admin.getSalary() << endl;
+				cout << "---------------------" << endl;
+			}
+
 			adminFile.close();
-			cout << "data from file: " << fileName << endl;
 		}
 		else {
 			cerr << "Error opening file";
 		}
+		cout << "Admins Data From File: " << fileName << endl;
 	}
 
 					//Save
@@ -195,10 +213,15 @@ public:
 	{
 		ofstream file(fileName, ios::app);
 		ofstream file1(lastIdFile, ios::app);
+
 		if (file.is_open() && file1.is_open())
 		{
 			int result = FilesHelper::getLastID(lastIdFile);
 			int value = result + 1;
+
+			int result1 = FilesHelper::getLastID(lastIdFile);
+			int value1 = result1 + 1;
+
 			file << value;
 			file << "$" << e.getName() << "$" << e.getPassword() << "$" << e.getSalary() << endl;
 			file1 << value;
@@ -276,59 +299,67 @@ public:
 	//	}
 	//}
 
-	//static void saveEmployee(string fileName, string lastIdFile, Employee e)
-	//{
-	//	int LastId = getLast("New Employee.txt");
-	//	LastId++;
+	/*static void saveEmployee(string fileName, string lastIdFile, Employee e)
+	{
+		int LastId = getLast("New Employee.txt");
+		LastId++;
 
-	//	saveLast("New Employee.txt", LastId);
+		saveLast("New Employee.txt", LastId);
 
-	//	ofstream file("Employee.txt", ios::app);
-	//	if (file.is_open())
-	//	{
-	//		file << LastId << "$" << e.getName() << "$" << e.getPassword() << "$" << e.getSalary() << endl;
-	//		file.close();
-	//		cout << "Employee Information Saved \n";
-	//	}
-	//}
+		ofstream file("Employee.txt", ios::app);
+		if (file.is_open())
+		{
+			file << LastId << "$" << e.getName() << "$" << e.getPassword() << "$" << e.getSalary() << endl;
+			file.close();
+			cout << "Employee Information Saved \n";
+		}
+	}*/
 
-	//static void getClients()
-	//{
-	//	vector<Client> clients;
-	//	ifstream file("Clients.txt");
+	/*static void getClients()
+	{
+		vector<Client> clients;
+		string line;
+		ifstream file("Clients.txt");
 
-	//	if (file.is_open())
-	//	{
-	//		string line;
-	//		while (getline(file, line))
-	//		{
-	//			clients.push_back(Parser::parseToClient(line));
-	//		}
-	//		file.close();
-	//	}
-	//	else {
-	//		cerr << "Unable to open the file \n";
-	//	}
-	//}
+		if (file.is_open())
+		{
+			
+			while (getline(file, line))
+			{
+				clients.push_back(Parser::parseToClient(line));
+			}
+			file.close();
 
-	//static void getEmployees()
-	//{
-	//	vector<Employee> employees;
-	//	ifstream file("Employee.txt");
+			for (Client& client : clients)
+			{
+				cout << "Client ID: " << client.getId() << ", Name: " << client.getName() << ", Password: " <<
+					client.getPassword() << ", Balance: " << client.getBalance() << endl;
+				cout << "---------------------" << endl;
+			}
+		}
+		else {
+			cerr << "Unable to open Clients file \n";
+		}
+	}*/
 
-	//	if (file.is_open())
-	//	{
-	//		string line;
-	//		while (getline(file, line))
-	//		{
-	//			employees.push_back(Parser::parseToEmployee(line));
-	//		}
-	//		file.close();
-	//	}
-	//	else {
-	//		cerr << "Unable to open the file \n";
-	//	}
-	//}
+	/*static void getEmployees()
+	{
+		vector<Employee> employees;
+		ifstream file("Employee.txt");
+
+		if (file.is_open())
+		{
+			string line;
+			while (getline(file, line))
+			{
+				employees.push_back(Parser::parseToEmployee(line));
+			}
+			file.close();
+		}
+		else {
+			cerr << "Unable to open the file \n";
+		}
+	}*/
 
 	//static void getAdmins()
 	//{
