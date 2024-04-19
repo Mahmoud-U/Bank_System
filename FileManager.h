@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 
+#include "Client.h"
 #include "DataSourceInterface.h"
 #include "FilesHelper.h"
 using namespace std;

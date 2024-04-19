@@ -18,9 +18,38 @@ using namespace std;
 
 int main()
 {
+	//FileManager Test
+	FileManager f;
 
+	/*Client c1(100, "Mido", "PassAttemp3t", 450500);
+	Client c2(104, "Tarek", "eifewfgweg5A", 87900);
+	Client c3(108, "Mido", "oktopmiht5N", 22000);
+
+	Employee e1(100, "Mido", "PassAttemp3t", 450500);
+	Employee e2(104, "Tarek", "eifewfgweg5A", 87900);
+	Employee e3(108, "Mido", "oktopmiht5N", 22000);
+
+	Admin a1(100, "Mido", "PassAttemp3t", 450500);
+	Admin a2(104, "Tarek", "eifewfgweg5A", 87900);
+	Admin a3(108, "Mido", "oktopmiht5N", 22000);
+
+	f.addClient(c1);
+	f.addClient(c2);
+	f.addClient(c3);
+
+	f.addEmployee(e1);
+	f.addEmployee(e2);
+	f.addEmployee(e3);
+
+	f.addAdmin(a1);
+	f.addAdmin(a2);
+	f.addAdmin(a3);*/
+
+	//f.removeAllClients();
+	//f.removeAllEmployees();
+	//f.removeAllAdmins();
 	
-
+	//..........................................................................
 	//FilesHelper & FileManager with Parse Admin test
 	/*Admin admin1(500, "Hens", "PasswordTest1", 100000);
 	Admin admin2(501, "Soha", "adniafu448A", 80000);
@@ -54,7 +83,7 @@ int main()
 	FilesHelper::getClients();
 	FilesHelper::clearFile("Clients.txt", "New Clients.txt");*/
 
-
+	//..........................................................................
 	//Parser Test
 	/*string c = "112$Amigo$PassTest22224$80000";
 	string e = "220$Emploo$PassTest22224$10000";
@@ -82,7 +111,7 @@ int main()
 	cout << "Password: " << a1.getPassword() << endl;
 	cout << "Balance: " << a1.getSalary() << endl;*/
 
-
+	//..........................................................................
 	//Test 1
 	/*Client C1(1, "Batman", "Baaat1234", 4000);
 	//C1.Display();
