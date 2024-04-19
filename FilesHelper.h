@@ -197,9 +197,15 @@ public:
 	static void saveClient(Client c)
 	{
 		ofstream file("Clients.txt", ios::app);
-		if (file.is_open())
+		ofstream file1("New Client.txt", ios::app);
+
+		int result = FilesHelper::getLastID("New Client.txt") + 1;
+		saveLast("New Client.txt", result);
+
+		if (file.is_open() && file1.is_open())
 		{
-			file << c.getId() << "$" << c.getName() << "$" << c.getPassword() << "$" << c.getBalance() << endl;
+			file << result;
+			file <<"$" << c.getName() << "$" << c.getPassword() << "$" << c.getBalance() << endl;
 			file.close();
 			cout << "Client Information Saved \n";
 		}
@@ -214,24 +220,19 @@ public:
 		ofstream file(fileName, ios::app);
 		ofstream file1(lastIdFile, ios::app);
 
+		int result = FilesHelper::getLastID(lastIdFile) + 1;
+		saveLast("New Employee.txt", result);
+
 		if (file.is_open() && file1.is_open())
 		{
-			int result = FilesHelper::getLastID(lastIdFile);
-			int value = result + 1;
-
-			int result1 = FilesHelper::getLastID(lastIdFile);
-			int value1 = result1 + 1;
-
-			file << value;
+			file << result;
 			file << "$" << e.getName() << "$" << e.getPassword() << "$" << e.getSalary() << endl;
-			file1 << value;
 			file.close();
 			cout << "Employee Information Saved \n";
 		}
-
 		else
 		{
-			cerr << "Unable to open Employee file \n";
+			cerr << "Unable to open Employees file \n";
 		}
 	}
 
@@ -301,7 +302,7 @@ public:
 
 	/*static void saveEmployee(string fileName, string lastIdFile, Employee e)
 	{
-		int LastId = getLast("New Employee.txt");
+		int LastId = FilesHelper::getLastID("New Employee.txt");
 		LastId++;
 
 		saveLast("New Employee.txt", LastId);

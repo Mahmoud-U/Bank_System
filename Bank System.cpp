@@ -10,9 +10,7 @@
 #include "Client.h"
 #include "Employee.h"
 #include "Admin.h"
-//#include "Parser.h"
-#include "FilesHelper.h"
-//#include "FileManager.h"
+#include "FileManager.h"
 using namespace std;
 
 //void clearScreen();
@@ -21,7 +19,7 @@ using namespace std;
 int main()
 {
 
-
+	
 
 	//FilesHelper & FileManager with Parse Admin test
 	/*Admin admin1(500, "Hens", "PasswordTest1", 100000);

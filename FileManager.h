@@ -27,16 +27,20 @@ public:
 	void addAdmin(Admin& a) override
 	{
 		ofstream myFile("Admins.txt", ios::app);
+		ofstream myfile1("New Admin.txt", ios::app);
+
+		int result = FilesHelper::getLastID("New Admin.txt") + 1;
+		FilesHelper::saveLast("New Admin.txt", result);
 
 		if (myFile.is_open())
 		{
-			myFile << a.getId() << "$" << a.getName() << "$" << a.getPassword() << "$" << a.getSalary() << endl;
-
-			cout << "Admin Information Saved \n";
+			myFile << result;
+			myFile <<"$" << a.getName() << "$" << a.getPassword() << "$" << a.getSalary() << endl;
 			myFile.close();
+			cout << "Admin Information Saved \n";
 		}
 		else
-			cerr << "Unable to open the file \n";
+			cerr << "Unable to open Admins file \n";
 	}
 
 				// Get
