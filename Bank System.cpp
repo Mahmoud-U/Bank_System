@@ -50,7 +50,7 @@ int main()
 	//f.removeAllAdmins();
 	
 	//..........................................................................
-	//FilesHelper & FileManager with Parse Admin test
+	//FilesHelper & (FileManager with Parser for Admin test)
 	/*Admin admin1(500, "Hens", "PasswordTest1", 100000);
 	Admin admin2(501, "Soha", "adniafu448A", 80000);
 	Admin admin3(502, "Amanda", "rhegoelorV54", 70000);
