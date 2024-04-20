@@ -152,13 +152,13 @@ public:
 		return this->salary = salary;
 	}
 
-				// Functions
-
+	// Add Client
 	void addClient(Client& client) 
 	{
 		clients.push_back(&client);
 	}
 
+	// Search Client
 	Client* searchClient(int id)
 	{
 		for (Client* client : clients)
@@ -169,7 +169,8 @@ public:
 		}
 		return nullptr;
 	}
-
+	 
+	// List Client
 	void listClient() {
 		for (Client* client : clients)
 		{
@@ -177,6 +178,7 @@ public:
 		}
 	}
 
+	// Edit Client
 	void editClient(int id, string name, string password, double balance)
 	{
 		Client* client = searchClient(id);
