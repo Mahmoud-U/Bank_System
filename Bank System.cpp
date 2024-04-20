@@ -19,7 +19,7 @@ using namespace std;
 int main()
 {
 	//FileManager Test
-	FileManager f;
+	//FileManager f;
 
 	/*Client c1(100, "Mido", "PassAttemp3t", 450500);
 	Client c2(104, "Tarek", "eifewfgweg5A", 87900);
@@ -44,6 +44,12 @@ int main()
 	f.addAdmin(a1);
 	f.addAdmin(a2);
 	f.addAdmin(a3);*/
+
+	/*f.getAllClients();
+	cout << endl;
+	f.getAllEmployees();
+	cout << endl;
+	f.getAllAdmins();*/
 
 	//f.removeAllClients();
 	//f.removeAllEmployees();

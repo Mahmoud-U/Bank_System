@@ -46,24 +46,19 @@ public:
 
 				// Get
 
-	vector<Client> getAllClients()
+	virtual void getAllClients()
 	{
 		FilesHelper::getClients();
-
-		return getAllClients();
 	}
 
-	vector<Employee> getAllEmployees()
+	virtual void getAllEmployees()
 	{
 		FilesHelper::getEmployees();
-
-		return getAllEmployees();
 	}
 
-	vector<Admin> getAllAdmins()
+	virtual void getAllAdmins()
 	{
 		FilesHelper::getAdmins();
-		return getAllAdmins();
 	}
 
 				//Remove
