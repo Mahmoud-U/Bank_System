@@ -161,20 +161,28 @@ public:
 	// Search Client
 	Client* searchClient(int id)
 	{
-		for (Client* client : clients)
+		/*for (Client* client : clients)
 		{
-			if (client->id == id) {
+			if (client->getId() == id) {
 				return client;
 			}
 		}
-		return nullptr;
+		return nullptr;*/
+
+		for (clientX = allClients.begin(); clientX != allClients.end(); clientX++)
+		{
+			if (clientX->getId() == id) {
+				return clientX._Ptr;
+			}
+		}
+		return NULL;
 	}
 	 
 	// List Client
 	void listClient() {
 		for (Client* client : clients)
 		{
-			cout << "ID: " << client->getId() << ", Name: " << client->getName() << endl;
+			client->Display();
 		}
 	}
 
@@ -196,10 +204,8 @@ public:
 	void Display()
 	{
 		cout << "Person Details : " << endl;
-		cout << "ID : " << getId() << endl;
-		cout << "Name : " << getName() << endl;
-		cout << "Password : " << getPassword() << endl;
-		cout << "Salary : " << getSalary() << endl;
+		cout << "ID : " << getId() << ", Name : " << getName() << ", Password : "
+			<< getPassword() << ", Salary : " << getSalary() << endl;
 	}
 
 	/*Person* display() {
@@ -211,4 +217,7 @@ public:
 
 	}
 };
+
+static vector<Employee> allEmployees;
+static vector<Employee>::iterator employeeX;
 

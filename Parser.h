@@ -11,7 +11,7 @@ using namespace std;
 
 class Parser
 {
-public:
+private:
 	static vector<string> split(string& line, char delimiter)
 	{
 		vector<string> tokens;
@@ -25,6 +25,7 @@ public:
 		return tokens;
 	}
 
+public:
 	static Client parseToClient(string& line)
 	{
 		vector <string> tokens = split(line, '$');

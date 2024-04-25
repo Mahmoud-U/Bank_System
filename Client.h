@@ -74,10 +74,8 @@ public:
 	void Display()
 	{
 		cout << "Person Details : " << endl;
-		cout << "ID : " << getId() << endl;
-		cout << "Name : " << getName() << endl;
-		cout << "Password : " << getPassword() << endl;
-		cout << "Balance : " << getBalance() << endl;
+		cout << "ID : " << getId() << ", Name : " << getName() << ", Password : "
+			<< getPassword() << ", Balance : " << getBalance() << endl;
 	}
 
 
@@ -90,4 +88,7 @@ public:
 
 	}
 };
+
+static vector<Client> allClients;
+static vector<Client>::iterator clientX;
 

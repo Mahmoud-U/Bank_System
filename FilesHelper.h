@@ -25,15 +25,11 @@ public:
 	static int getLast(string fileName)
 	{
 		int id{};
-		ifstream file(fileName);
-		if (file.is_open()) {
-			file >> id;
-			file.close();
-		}
-		else {
-			cerr << "Unable to get data from the file \n";
-		}
-
+		ifstream file;
+		file.open(fileName);
+		file >> id;
+		file.close();
+		
 		return id;
 	}
 
@@ -90,6 +86,7 @@ public:
 		return data;
 	}
 
+	//Get All Clients
 	static void getClients()
 	{
 		vector<Client> clients;
@@ -120,6 +117,7 @@ public:
 		cout << "Clients Data From File: " << fileName << endl;
 	}
 
+	//Get All Employees
 	static void getEmployees()
 	{
 		vector<Employee> employees;
@@ -150,6 +148,7 @@ public:
 		cout << "Employee Data From File: " << fileName << endl;
 	}
 
+	//Get All Admins
 	static void getAdmins() 
 	{
 		vector<Admin> admins;
@@ -182,30 +181,26 @@ public:
 
 					//Save
 
-	static void saveLast(string fileName, int id)
+	static void saveLast(string lastIdFile, int id)
 	{
-		ofstream file(fileName);
-		if (file.is_open()) {
-			file << id;
-			file.close();
-		}
-		else {
-			cerr << "Unable to save in the file \n";
-		}
+		ofstream file;
+		file.open(lastIdFile);
+		file << id;
+		file.close();
 	}
 
+	//Save Client
 	static void saveClient(Client c)
 	{
 		ofstream file("Clients.txt", ios::app);
 		ofstream file1("New Client.txt", ios::app);
 
-		int result = FilesHelper::getLastID("New Client.txt") + 1;
-		saveLast("New Client.txt", result);
+		int id = FilesHelper::getLastID("New Client.txt") + 1;
+		saveLast("New Client.txt", id);
 
 		if (file.is_open() && file1.is_open())
 		{
-			file << result;
-			file <<"$" << c.getName() << "$" << c.getPassword() << "$" << c.getBalance() << endl;
+			file << id << "$" << c.getName() << "$" << c.getPassword() << "$" << c.getBalance() << endl;
 			file.close();
 			cout << "Client Information Saved \n";
 		}
@@ -215,6 +210,7 @@ public:
 		}
 	}
 
+	//Save Employee
 	static void saveEmployee(string fileName, string lastIdFile, Employee e)
 	{
 		ofstream file(fileName, ios::app);
@@ -254,9 +250,9 @@ public:
 			cerr << "Unable to clear data \n";
 		}
 	}
-
+};
 	//.....................................................................
-	 // Mahmoud Attempt
+	 // Another Attempt
 
 	//static void saveLast(string fileName, int id)
 	//{
@@ -394,4 +390,3 @@ public:
 	//		cerr << "Unable To Clear Data \n";
 	//	}
 	//}	
-};

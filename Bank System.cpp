@@ -11,6 +11,7 @@
 #include "Employee.h"
 #include "Admin.h"
 #include "FileManager.h"
+#include "EmployeeManager.h"
 using namespace std;
 
 //void clearScreen();
@@ -18,6 +19,14 @@ using namespace std;
 
 int main()
 {
+
+	EmployeeManager m;
+	Employee* Amigo = new Employee;
+	m.searchForClient(Amigo);
+	/*m.printClientMenu();
+	cout << endl;
+	m.listAllClients(Amigo);*/
+
 	//FileManager Test
 	//FileManager f;
 
