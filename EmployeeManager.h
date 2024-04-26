@@ -4,7 +4,6 @@
 #include <vector>
 #include "fstream"
 
-//#include "Employee.h"
 #include "FileManager.h"
 using namespace std;
 class EmployeeManager 
@@ -72,17 +71,14 @@ public:
 			cout << "Enter client ID to search: \n";
 			cin >> id;
 
-			ifstream file;
-			file.open("Client.txt");
-
-			Employee e;
-			Client* c = e.searchClient(id);
-
-			if (c) {
-				cout << "Client found with ID: " << c->getId() << endl;
+			ifstream file("Client.txt");
+			if (!file.is_open())
+			{
+				cerr << "Error Opening file \n";
 			}
-			else {
-				cerr << "No Client Meets That ID \n";
+			else
+			{
+
 			}
 		}
 	}

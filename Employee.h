@@ -161,21 +161,21 @@ public:
 	// Search Client
 	Client* searchClient(int id)
 	{
-		/*for (Client* client : clients)
+		for (Client* client : clients)
 		{
 			if (client->getId() == id) {
 				return client;
 			}
 		}
-		return nullptr;*/
+		return nullptr;
 
-		for (clientX = allClients.begin(); clientX != allClients.end(); clientX++)
+		/*for (clientX = allClients.begin(); clientX != allClients.end(); clientX++)
 		{
 			if (clientX->getId() == id) {
 				return clientX._Ptr;
 			}
 		}
-		return NULL;
+		return NULL;*/
 	}
 	 
 	// List Client
