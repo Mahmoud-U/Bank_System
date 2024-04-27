@@ -28,20 +28,9 @@ public:
 		}
 		else
 		{
-			int id{};
-			string name, password;
-			double balance{};
-
-			cout << "ID: "; cin >> id;
-			cout << "Name: "; cin >> name;
-			cout << "Password: "; cin >> password;
-			cout << "Balance: "; cin >> balance;
-
-			Client newClient(id, name, password, balance);
+			Client c;
 			FileManager f;
-			f.addClient(newClient);
-
-			cout << "Client " << name << " added successfully by Employee " << employee->getId() << endl;
+			f.addClient(c);
 		}
 	}
 
@@ -70,24 +59,8 @@ public:
 		}
 		else
 		{
-			int searchId{};
-			cout << "Enter client ID to search: \n";
-			cin >> searchId;
+			int id{};
 
-			vector<Client> clients;
-			ifstream file;
-			file.open("Clients.txt");
-			string line;
-			while (getline(file, line))
-			{
-				clients.push_back(Parser::parseToClient(line));
-			}
-
-			Client* c = employee->searchClient(searchId);
-			if (c != nullptr)
-				cout << "Found";
-			else
-				cout << "Not Found";
 		}
 	}
 
@@ -107,7 +80,7 @@ public:
 			ofstream file("Clients.txt");
 			if (file.is_open())
 			{
-				employee->editClient(1, "Mido", "PassAttemp3t", 450500);
+				//employee->editClient(1, "Mido", "PassAttemp3t", 450500);
 			}
 		}
 	}

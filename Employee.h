@@ -2,11 +2,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <cmath>
 #include <regex>
 #include <exception>
 
-#include "FileManager.h"
 #include "Client.h"
 using namespace std;
 
@@ -17,11 +15,6 @@ protected:
 	string name;
 	string password;
 	double salary;
-
-	// Declare Admin as a friend class to allow access to protected members
-	vector<Client*> clients;
-	friend class Admin;
-
 public:
 	Employee()
 	{
@@ -153,48 +146,42 @@ public:
 		return this->salary = salary;
 	}
 
-	// Add Client
-	void addClient(Client& client) 
+						//Methods
+
+	//Add Client
+	void addClient(Client& client)
 	{
-		FileManager f;
-		f.addClient(client);
+		allClients.push_back(client);
 	}
 
 	// Search Client
 	Client* searchClient(int id)
 	{
-		for (Client* client : clients)
+		for (clientX = allClients.begin(); clientX != allClients.end(); clientX++)
 		{
-			if (client->getId() == id) {
-				return client;
-			}
+			if (clientX->getId() == id)
+				return clientX._Ptr;
 		}
 		return nullptr;
 	}
-	 
+
 	// List Client
 	void listClient() {
-		for (Client* client : clients)
+		for (clientX = allClients.begin(); clientX != allClients.end(); clientX++)
 		{
-			client->Display();
+			clientX->Display();
 		}
 	}
 
 	// Edit Client
 	void editClient(int id, string name, string password, double balance)
 	{
-		Client* client = searchClient(id);
-		if (client) {
-			client->name = name;
-			client->password = password;
-			client->balance = balance;
-			cout << "Client information updated successfully." << endl;
-		}
-		else {
-			cout << "Client not found." << endl;
-		}
+		searchClient(id)->setName(name);
+		searchClient(id)->setPassword(password);
+		searchClient(id)->setBalance(balance);
 	}
 
+	//Display
 	void Display()
 	{
 		cout << "Person Details : " << endl;
@@ -214,11 +201,3 @@ public:
 
 static vector<Employee> allEmployees;
 static vector<Employee>::iterator employeeX;
-
-//for (clientX = allClients.begin(); clientX != allClients.end(); clientX++)
-//{
-//	if (clientX->getId() == id) {
-//		return clientX._Ptr;
-//	}
-//}
-//return NULL;

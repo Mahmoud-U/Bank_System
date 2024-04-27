@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "Employee.h"
-#include "Client.h"
 using namespace std;
 
 class Admin : public Employee
@@ -13,10 +12,7 @@ protected:
 	//singleton design pattern
 	//1.private constructor
 	//2.static object pointer
-
-    static Admin* obj;
-	vector<Employee*> employees;
-    
+    static Admin* obj;    
 public:
     Admin() {}
     Admin(int id, string name, string password, double Salary)
@@ -50,43 +46,39 @@ public:
  //       }
  //   }
 
-                // Functions        
-            
+                // Methods        
+       
+    //Add Employee
     void addEmployee(Employee& employee) 
     {
-        employees.push_back(&employee);
+        allEmployees.push_back(employee);
     }
 
-    Employee* searchEmployee(int id) 
+    //Search Employee
+    Employee* searchEmployee(int id)
     {
-        for (Employee* employee : employees) {
-            if (employee->id == id) {
-                return employee;
-            }
+        for (employeeX = allEmployees.begin(); employeeX != allEmployees.end(); employeeX++)
+        {
+            if (employeeX->getId() == id)
+                return employeeX._Ptr;
         }
         return nullptr;
     }
 
-    void editEmployee(int id, string name, string password, double salary) 
-    {
-        Employee* employee = searchEmployee(id);
-        if (employee) {
-            employee->name = name;
-            employee->password = password;
-            employee->salary = salary;
-            cout << "Employee information updated successfully." << endl;
-        }
-        else {
-            cout << "Employee not found." << endl;
+    //List Employee
+    void listEmployee() {
+        for (employeeX = allEmployees.begin(); employeeX != allEmployees.end(); employeeX++)
+        {
+            employeeX->Display();
         }
     }
 
-    void listEmployees() 
+    //Edit Employee
+    void editEmployee(int id, string name, string password, double salary)
     {
-        cout << "List of Employees:" << endl;
-        for (Employee* employee : employees) {
-            cout << "ID: " << employee->id << ", Name: " << employee->name << ", Salary: $" << employee->salary << endl;
-        }
+        searchEmployee(id)->setName(name);
+        searchEmployee(id)->setPassword(password);
+        searchEmployee(id)->setSalary(salary);
     }
 
 	void Display()

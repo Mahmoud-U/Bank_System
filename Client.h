@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <cmath>
 #include <regex>
 #include <exception>
 
@@ -11,12 +10,6 @@ using namespace std;
 
 class Client : public Person
 {
-protected:
-	// Declare Admin as a friend class to allow access to protected members
-	friend class Employee;
-	friend class Admin;
-	friend class FileManager;
-
 public:
 	Client() {}
 	Client(int id, string name, string password, double balance)

@@ -4,9 +4,6 @@
 #include <fstream>
 #include <sstream>
 
-#include "Employee.h"
-#include "Admin.h"
-#include "Client.h"
 #include "Parser.h"
 using namespace std;
 
@@ -89,94 +86,41 @@ public:
 	//Get All Clients
 	static void getClients()
 	{
-		vector<Client> clients;
-		string  fileName;
-		fileName = "Clients.txt";
-		ifstream employeesFile(fileName);
+		ifstream file;
+		file.open("Clients.txt");
 		string line;
-
-		if (employeesFile.is_open())
+		while (getline(file, line))
 		{
-
-			while (getline(employeesFile, line))
-			{
-				clients.push_back(Parser::parseToClient(line));
-			}
-
-			for (Client& client : clients)
-			{
-				cout << "Client ID: " << client.getId() << ", Name: " << client.getName() << ", Password: " <<
-					client.getPassword() << ", Balance: " << client.getBalance() << endl;
-				cout << "---------------------" << endl;
-			}
-			employeesFile.close();
+			allClients.push_back(Parser::parseToClient(line));
 		}
-		else {
-			cerr << "Unable to open Clients file \n";
-		}
-		cout << "Clients Data From File: " << fileName << endl;
+		file.close();
 	}
 
 	//Get All Employees
 	static void getEmployees()
 	{
-		vector<Employee> employees;
-		
-		string  fileName;
-		fileName = "Employee.txt";
-		ifstream employeesFile(fileName);
+		ifstream file;
+		file.open("Employee.txt");
 		string line;
-
-		if (employeesFile.is_open())
+		while (getline(file, line))
 		{
-			while (getline(employeesFile, line))
-			{
-				employees.push_back(Parser::parseToEmployee(line));
-			}
-
-			for (Employee& employee : employees)
-			{
-				cout << "Employee ID: " << employee.getId() << ", Name: " << employee.getName() << ", Password: " <<
-					employee.getPassword() << ", Salary: " << employee.getSalary() << endl;
-				cout << "---------------------" << endl;
-			}
-			employeesFile.close();
+			allEmployees.push_back(Parser::parseToEmployee(line));
 		}
-		else {
-			cerr << "Unable to open the file \n";
-		}
-		cout << "Employee Data From File: " << fileName << endl;
+		file.close();
 	}
 
 	//Get All Admins
 	static void getAdmins() 
 	{
-		vector<Admin> admins;
 
-		string  fileName;
-		fileName = "Admins.txt";
-		ifstream adminFile(fileName);
+		ifstream file;
+		file.open("Admins.txt");
 		string line;
-
-		if (adminFile.is_open()) 
+		while (getline(file, line)) 
 		{
-			while (getline(adminFile, line)) {
-				admins.push_back(Parser::parseToAdmin(line));
-			}
-
-			for (Admin& admin : admins)
-			{
-				cout << "Employee ID: " << admin.getId() << ", Name: " << admin.getName() << ", Password: " <<
-					admin.getPassword() << ", Salary: " << admin.getSalary() << endl;
-				cout << "---------------------" << endl;
-			}
-
-			adminFile.close();
+			allAdmins.push_back(Parser::parseToAdmin(line));
 		}
-		else {
-			cerr << "Error opening file";
-		}
-		cout << "Admins Data From File: " << fileName << endl;
+		file.close();
 	}
 
 					//Save
