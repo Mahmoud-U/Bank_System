@@ -9,6 +9,7 @@ using namespace std;
 class EmployeeManager 
 {
 public:
+	//Print Client Menu
 	static void printClientMenu()
 	{
 		cout << "===== Client Menu ===== \n";
@@ -44,6 +45,7 @@ public:
 		}
 	}
 
+	//List All Clients
 	static void listAllClients(Employee* employee)
 	{
 		if (employee == nullptr)
@@ -58,6 +60,7 @@ public:
 		}
 	}
 
+	//Search For Clients
 	static void searchForClient(Employee* employee)
 	{
 		if (employee == nullptr)
@@ -67,18 +70,44 @@ public:
 		}
 		else
 		{
-			int id{};
+			int searchId{};
 			cout << "Enter client ID to search: \n";
-			cin >> id;
+			cin >> searchId;
 
-			ifstream file("Client.txt");
-			if (!file.is_open())
+			vector<Client> clients;
+			ifstream file;
+			file.open("Clients.txt");
+			string line;
+			while (getline(file, line))
 			{
-				cerr << "Error Opening file \n";
+				clients.push_back(Parser::parseToClient(line));
 			}
-			else
-			{
 
+			Client* c = employee->searchClient(searchId);
+			if (c != nullptr)
+				cout << "Found";
+			else
+				cout << "Not Found";
+		}
+	}
+
+	//Edit Client Info
+	static void editClientInfo(Employee* employee)
+	{
+		if (employee == nullptr)
+		{
+			cerr << "Invalid Employee Pointer \n";
+			return;
+		}
+		else
+		{
+			string newName, newPass;
+			double newBalance{};
+
+			ofstream file("Clients.txt");
+			if (file.is_open())
+			{
+				employee->editClient(1, "Mido", "PassAttemp3t", 450500);
 			}
 		}
 	}

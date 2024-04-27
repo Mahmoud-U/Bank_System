@@ -23,6 +23,7 @@ int main()
 	EmployeeManager m;
 	Employee* Amigo = new Employee;
 	m.searchForClient(Amigo);
+
 	/*m.printClientMenu();
 	cout << endl;
 	m.listAllClients(Amigo);*/

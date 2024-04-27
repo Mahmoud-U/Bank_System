@@ -168,14 +168,6 @@ public:
 			}
 		}
 		return nullptr;
-
-		/*for (clientX = allClients.begin(); clientX != allClients.end(); clientX++)
-		{
-			if (clientX->getId() == id) {
-				return clientX._Ptr;
-			}
-		}
-		return NULL;*/
 	}
 	 
 	// List Client
@@ -221,3 +213,10 @@ public:
 static vector<Employee> allEmployees;
 static vector<Employee>::iterator employeeX;
 
+//for (clientX = allClients.begin(); clientX != allClients.end(); clientX++)
+//{
+//	if (clientX->getId() == id) {
+//		return clientX._Ptr;
+//	}
+//}
+//return NULL;
