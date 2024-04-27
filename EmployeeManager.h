@@ -111,5 +111,32 @@ public:
 			}
 		}
 	}
+
+	//Client Login
+	static Client* login(int id, string password)
+	{
+		vector<Client*> allClients;
+		for (Client* client : allClients)
+		{
+			if (client->getId() == id && client->getPassword() == password)
+			{
+				return client;
+			}
+		}
+		return nullptr;
+	}
+
+	//Employee Options
+	static bool employeeOptions(Client* client)
+	{
+		if (client == nullptr)
+		{
+			cout << "Invalid client." << endl;
+			return false;
+		}
+		else {
+
+		}
+	}
 };
 
