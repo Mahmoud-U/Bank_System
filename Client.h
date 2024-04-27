@@ -66,7 +66,7 @@ public:
 
 	void Display()
 	{
-		cout << "Person Details : " << endl;
+		cout << "Client Details : " << endl;
 		cout << "ID : " << getId() << ", Name : " << getName() << ", Password : "
 			<< getPassword() << ", Balance : " << getBalance() << endl;
 	}

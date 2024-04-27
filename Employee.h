@@ -184,7 +184,7 @@ public:
 	//Display
 	void Display()
 	{
-		cout << "Person Details : " << endl;
+		cout << "Employee Details : " << endl;
 		cout << "ID : " << getId() << ", Name : " << getName() << ", Password : "
 			<< getPassword() << ", Salary : " << getSalary() << endl;
 	}

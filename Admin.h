@@ -83,8 +83,10 @@ public:
 
 	void Display()
 	{
-		Employee::Display();
-	}
+        cout << "Admin Details : " << endl;
+        cout << "ID : " << getId() << ", Name : " << getName() << ", Password : "
+            << getPassword() << ", Salary : " << getSalary() << endl;
+    }
 
 	/*Person* display() {
 		return this;
