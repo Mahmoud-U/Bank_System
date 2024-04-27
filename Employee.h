@@ -6,6 +6,7 @@
 #include <regex>
 #include <exception>
 
+#include "FileManager.h"
 #include "Client.h"
 using namespace std;
 
@@ -155,7 +156,8 @@ public:
 	// Add Client
 	void addClient(Client& client) 
 	{
-		clients.push_back(&client);
+		FileManager f;
+		f.addClient(client);
 	}
 
 	// Search Client
