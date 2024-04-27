@@ -22,7 +22,7 @@ int main()
 
 	EmployeeManager m;
 	Employee* Amigo = new Employee;
-	m.searchForClient(Amigo);
+	m.newClient(Amigo);
 
 
 	/*m.printClientMenu();

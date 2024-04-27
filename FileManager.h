@@ -16,35 +16,11 @@ public:
 
 	void addClient(Client& c) 
 	{
-		string name, password;
-		double balance{};
-
-		cout << "Enter Your Name: "; cin >> name;
-		c.setName(name);
-
-		cout << "Enter Your Password: "; cin >> password;
-		c.setPassword(password);
-
-		cout << "Enter Your Balance: "; cin >> balance;
-		c.setBalance(balance);
-
 		FilesHelper::saveClient(c);
 	}
 
 	void addEmployee(Employee& e) 
 	{
-		string name, password;
-		double salary{};
-
-		cout << "Enter Your Name: "; cin >> name;
-		e.setName(name);
-
-		cout << "Enter Your Password: "; cin >> password;
-		e.setPassword(password);
-
-		cout << "Enter Your Balance: "; cin >> salary;
-		e.setSalary(salary);
-
 		FilesHelper::saveEmployee("Employee.txt", "New Employee.txt", e);
 	}
 

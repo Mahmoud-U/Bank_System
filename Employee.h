@@ -151,6 +151,18 @@ public:
 	//Add Client
 	void addClient(Client& client)
 	{
+		string name, password;
+		double balance{};
+
+		cout << "Enter Your Name: "; cin >> name;
+		client.setName(name);
+
+		cout << "Enter Your Password: "; cin >> password;
+		client.setPassword(password);
+
+		cout << "Enter Your Balance: "; cin >> balance;
+		client.setBalance(balance);
+
 		allClients.push_back(client);
 	}
 

@@ -51,6 +51,18 @@ public:
     //Add Employee
     void addEmployee(Employee& employee) 
     {
+        string name, password;
+        double salary{};
+
+        cout << "Enter Your Name: "; cin >> name;
+        employee.setName(name);
+
+        cout << "Enter Your Password: "; cin >> password;
+        employee.setPassword(password);
+
+        cout << "Enter Your Balance: "; cin >> salary;
+        employee.setSalary(salary);
+
         allEmployees.push_back(employee);
     }
 
