@@ -198,7 +198,7 @@ public:
 	{
 		cout << "Employee Details : " << endl;
 		cout << "ID : " << getId() << ", Name : " << getName() << ", Password : "
-			<< getPassword() << ", Salary : " << getSalary() << endl;
+			 << getPassword() << ", Salary : " << getSalary() << endl;
 	}
 
 	/*Person* display() {
@@ -210,6 +210,5 @@ public:
 
 	}
 };
-
 static vector<Employee> allEmployees;
 static vector<Employee>::iterator employeeX;

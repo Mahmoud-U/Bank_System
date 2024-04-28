@@ -94,25 +94,44 @@ public:
 			cout << "Enter an ID to search \n";
 			cin >> id;
 
+			FileManager f;
+			f.getAllClients();
+
 			if (employee->searchClient(id) == nullptr)
 			{
 				cout << "Client Not Found \n";
 			}
 			else 
 			{
-				
-			}
+				int id{};
+				string name, password;
+				double balance{};
 
+				cout << "Enter new name for the client: ";
+				cin >> name;
+
+				cout << "Enter new password for the client: ";
+				cin >> password;
+
+				cout << "Enter new balance for the client: ";
+				cin >> balance;
+
+				employee->editClient(id, name, password, balance);
+
+				cout << "Client information updated successfully." << endl;
+			}
 		}
 	}
 
 	//Client Login
 	static Employee* loginEmployee(int id, string password)
 	{
+		FileManager f;
+		f.getAllEmployees();
 
 		if (employeeX->getId() == id && employeeX->getPassword() == password)
 		{
-
+			return employeeX._Ptr;
 		}
 		else
 		{

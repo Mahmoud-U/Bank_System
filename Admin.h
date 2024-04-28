@@ -97,7 +97,7 @@ public:
 	{
         cout << "Admin Details : " << endl;
         cout << "ID : " << getId() << ", Name : " << getName() << ", Password : "
-            << getPassword() << ", Salary : " << getSalary() << endl;
+             << getPassword() << ", Salary : " << getSalary() << endl;
     }
 
 	/*Person* display() {
@@ -109,6 +109,5 @@ public:
 
 	}
 };
-
 static vector<Admin> allAdmins;
 static vector<Admin>::iterator adminX;

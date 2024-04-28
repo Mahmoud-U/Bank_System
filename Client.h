@@ -68,7 +68,7 @@ public:
 	{
 		cout << "Client Details : " << endl;
 		cout << "ID : " << getId() << ", Name : " << getName() << ", Password : "
-			<< getPassword() << ", Balance : " << getBalance() << endl;
+			 << getPassword() << ", Balance : " << getBalance() << endl;
 	}
 
 
@@ -81,7 +81,5 @@ public:
 
 	}
 };
-
 static vector<Client> allClients;
 static vector<Client>::iterator clientX;
-
