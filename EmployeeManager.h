@@ -90,9 +90,11 @@ public:
 		}
 		else
 		{
-			int searchId{};
+			int id{};
+			cout << "Enter an ID to search \n";
+			cin >> id;
 
-			if (employee->searchClient(searchId) == nullptr)
+			if (employee->searchClient(id) == nullptr)
 			{
 				cout << "Client Not Found \n";
 			}
@@ -110,6 +112,10 @@ public:
 		if (employeeX->getId() == id && employeeX->getPassword() == password)
 		{
 
+		}
+		else
+		{
+			return nullptr;
 		}
 	}
 
