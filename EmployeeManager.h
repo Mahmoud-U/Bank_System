@@ -90,14 +90,17 @@ public:
 		}
 		else
 		{
-			string newName, newPass;
-			double newBalance{};
+			int searchId{};
 
-			ofstream file("Clients.txt");
-			if (file.is_open())
+			if (employee->searchClient(searchId) == nullptr)
 			{
-				//employee->editClient(1, "Mido", "PassAttemp3t", 450500);
+				cout << "Client Not Found \n";
 			}
+			else 
+			{
+				
+			}
+
 		}
 	}
 
@@ -161,8 +164,10 @@ public:
 			}
 
 			default:
+			{
 				cout << "Invalid Operation \n";
 				cout << "Please, Try Again \n";
+			}
 				break;
 			}
 		}

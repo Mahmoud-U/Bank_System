@@ -169,6 +169,10 @@ public:
 	// Search Client
 	Client* searchClient(int id)
 	{
+		int id{};
+		cout << "Enter an ID to search \n";
+		cin >> id;
+
 		for (clientX = allClients.begin(); clientX != allClients.end(); clientX++)
 		{
 			if (clientX->getId() == id)
