@@ -2,14 +2,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "fstream"
 
 #include "FileManager.h"
 using namespace std;
 class EmployeeManager 
 {
 public:
-	//Print Employee Menu
+	//Employee Menu
 	static void printEmployeeMenu()
 	{
 		cout << "===== Employee Menu ===== \n";
@@ -123,20 +122,16 @@ public:
 		}
 	}
 
-	//Client Login
+	//Employee LogIn
 	static Employee* loginEmployee(int id, string password)
 	{
 		FileManager f;
 		f.getAllEmployees();
 
 		if (employeeX->getId() == id && employeeX->getPassword() == password)
-		{
 			return employeeX._Ptr;
-		}
 		else
-		{
 			return nullptr;
-		}
 	}
 
 	//Employee Options
@@ -193,8 +188,9 @@ public:
 			{
 				cout << "Invalid Operation \n";
 				cout << "Please, Try Again \n";
-			}
 				break;
+			}
+
 			}
 		}
 	}
