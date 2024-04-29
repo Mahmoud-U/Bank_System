@@ -23,6 +23,9 @@
 #include <chrono>
 #include <thread>
 #include "Screens.h"
+#include"task3.h"
+#include"EmployeeManager.h"
+#include"Employee.h"
 
 using namespace std::chrono_literals;
 using namespace std;
@@ -84,6 +87,10 @@ public:
 			 SendMessage(consoleWindow, WM_CLOSE, 0, 0);
 		 }*/
 	 }
+	 static int loginAs() {
+		
+		 return;
+	 }
 
 	 static void loginOptions() {
 		 char choice;
@@ -96,6 +103,7 @@ public:
 			 		std::cout << "Choose your role" << std::endl;
 					SetConsoleTextAttribute(col, 10);
 			 		std::cout << "1. Admin" << std::endl;
+					
 					SetConsoleTextAttribute(col, 11);
 			 		std::cout << "2. Employee" << std::endl;
 					SetConsoleTextAttribute(col, 13);
@@ -110,6 +118,7 @@ public:
 			 		case '1':
 						SetConsoleTextAttribute(col, 10);
 			 			std::cout << "You are an Admin" << std::endl;
+					
 			 			break;
 			 		case '2':
 						SetConsoleTextAttribute(col, 11);
@@ -133,8 +142,34 @@ public:
 			 	} while (choice != '0');
 				system("cls");
 	 }
-	 static int loginAs() {
-		 
+	
+
+	 static void loginScreen(int n) {
+		 do{
+			 switch (n) {
+		 case '1':
+			 AdminManager::printClientMenu();
+			 AdminManager::AdminOptions( client);
+			 AdminManager::login( id,  password);
+			 break;
+		 case '2':
+			 EmployeeManager::printEmployeeMenu();
+			 EmployeeManager::employeeOptions( employee);
+			 break;
+		 case '3':
+			
+			 break;
+		 case '0':
+			
+			 std::cout << "Exitting" << std::endl;
+
+			 break;
+	
+		 }
+
+		 _getch(); // Wait for user to press a key
+	 } while (n != '0');
+	 system("cls");
 
 	 }
 
