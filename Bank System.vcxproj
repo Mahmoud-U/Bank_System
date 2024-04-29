@@ -131,6 +131,7 @@
     <ClCompile Include="AdminManager.cpp" />
     <ClCompile Include="Bank System.cpp" />
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="ClientManger.cpp" />
     <ClCompile Include="DataSourceInterface.cpp" />
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="EmployeeManager.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="Admin.h" />
     <ClInclude Include="AdminManager.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="ClientManger.h" />
     <ClInclude Include="DataSourceInterface.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="EmployeeManager.h" />

@@ -10,8 +10,9 @@
 #include "Client.h"
 #include "Employee.h"
 #include "Admin.h"
-#include "FileManager.h"
+#include "ClientManger.h"
 #include "EmployeeManager.h"
+#include "AdminManager.h"
 using namespace std;
 
 //void clearScreen();
@@ -19,11 +20,9 @@ using namespace std;
 
 int main()
 {
-
-	EmployeeManager m;
-	Employee* Amigo = new Employee;
-	m.newClient(Amigo);
-
+	AdminManager a;
+	Admin* Amigo = new Admin;
+	a.searchForEmployee(Amigo);
 
 	/*m.printClientMenu();
 	cout << endl;

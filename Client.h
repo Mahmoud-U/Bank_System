@@ -15,7 +15,7 @@ public:
 	Client(int id, string name, string password, double balance)
 		:Person(id, name, password, balance) {}
 
-	// Deposite
+	//Deposite
 	void Deposit(double amount)
 	{
 		if (amount > 0)
@@ -29,7 +29,7 @@ public:
 		}
 	}
 
-	// Withdraw
+	//Withdraw
 	void Withdraw(double amount)
 	{
 		if (amount > 0 && balance - amount >= 1500)
@@ -43,7 +43,7 @@ public:
 		}
 	}
 
-	// TransferTo
+	//TransferTo
 	void Transfer_To(double amount, Client& recipient)
 	{
 		if (amount > 0 && balance - amount >= 1500)

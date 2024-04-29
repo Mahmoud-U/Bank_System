@@ -12,11 +12,12 @@ public:
 	static void printEmployeeMenu()
 	{
 		cout << "===== Employee Menu ===== \n";
-		cout << "1. My Information \n";
-		cout << "2. Add Client \n";
-		cout << "3. Search Client \n";
-		cout << "4. list Client \n";
-		cout << "5. Edit Client \n";
+		cout << "1. Employee Login \n";
+		cout << "2. My Information \n";
+		cout << "3. Add Client \n";
+		cout << "4. Search Client \n";
+		cout << "5. list Client \n";
+		cout << "6. Edit Client \n";
 	}
 
 	//Add New Client
@@ -153,26 +154,48 @@ public:
 			switch (choice)
 			{
 			case 1:
-				employee->Display();
+			{
+				int id{};
+				string password;
+
+				cout << "Enter your ID: "; cin >> id;
+				cout << "Enter your password "; cin >> password;
+
+				loginEmployee(id, password);
 				break;
+			}
 
 			case 2:
+			{
+				employee->Display();
+				break;
+			}
+
+			case 3:
+			{
 				newClient(employee);
 				break;
+			}
 				
-			case 3:
+			case 4:
+			{
 				listAllClients(employee);
 				break;
-
-			case 4:
-				searchForClient(employee);
-				break;
+			}
 
 			case 5:
-				editClientInfo(employee);
+			{
+				searchForClient(employee);
 				break;
+			}
 
 			case 6:
+			{
+				editClientInfo(employee);
+				break;
+			}
+
+			case 7:
 			{
 				int id{};
 				string password;

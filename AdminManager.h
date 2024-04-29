@@ -7,38 +7,82 @@ using namespace std;
 class AdminManager
 {
 public:
-    //Client Menu
-    static void printClientMenu() {
-        cout << "===== Client Menu ===== \n";
-        cout << "1. My Information \n";
-        cout << "2. Deposite \n";
-        cout << "3. Withdraw \n";
-        cout << "4. Transfer To \n";
-        cout << "5. Check Balance \n";
+    //Admin Menu
+    static void printAdminMenu() {
+        cout << "===== Admin Menu ===== \n";
+        cout << "1. Admin Login \n";
+        cout << "2. My Information \n";
+        cout << "3. Search Employee \n";
+        cout << "4. List Employee \n";
+        cout << "5. Edit Employee \n";
     }
 
-    //Client LogIn
-    static Client* clientLogin(int id, string password) 
+    //Admin LogIn
+    static Admin* adminLogin(int id, string password) 
     {
         FileManager f;
-        f.getAllClients();
-        if (clientX->getId() == id && clientX->getPassword() == password)
-            return clientX._Ptr;
+        f.getAllAdmins();
+
+        if (adminX->getId() == id && adminX->getPassword() == password)
+            return adminX._Ptr;
         else
             return nullptr;
     }
 
-    //Client Options
-    static bool AdminOptions(Client* client) 
+    //Search For Employees
+    static void searchForEmployee(Admin* admin)
     {
-        if (client == nullptr)
+        if (admin == nullptr)
+        {
+            cerr << "Invalid Admin Pointer \n";
+            return;
+        }
+        else
+        {
+            int id{};
+            cout << "Enter an ID to search \n";
+            cin >> id;
+
+            FileManager f;
+            f.getAllEmployees();
+
+            if (admin->searchEmployee(id) == nullptr)
+            {
+                cout << "Employee Not Found \n";
+            }
+            else {
+                cout << "Employee Found \n";
+            }
+        }
+    }
+
+    //List Employees
+    static void listAllEmployees(Admin* admin)
+    {
+        if (admin == nullptr)
+        {
+            cerr << "Invalid admin Pointer \n";
+            return;
+        }
+        else
+        {
+            FileManager f;
+            f.getAllEmployees();
+            admin->listEmployee();
+        }
+    }
+
+    //Admin Options
+    static bool adminOptions(Admin* admin) 
+    {
+        if (admin == nullptr)
         {
             cout << "Invalid client." << endl;
             return false;
         }
         else
         {
-            printClientMenu();
+            printAdminMenu();
 
             int choice{};
             cin >> choice;
@@ -46,31 +90,52 @@ public:
             switch (choice)
             {
             case 1:
-                client->Display();
-                break;
+            {
+                int id{};
+                string password;
+                cout << "Enter your ID: "; cin >> id;
+                cout << "Enter your password "; cin >> password;
 
+                adminLogin(id, password);
+                break;
+            }
             case 2:
             {
-                double amount{};
-                client->Deposit(amount);
+                admin->Display();
                 break;
             }
+
             case 3:
             {
-                double amount{};
-                client->Withdraw(amount);
+                searchForEmployee(admin);
                 break;
             }
+
             case 4:
             {
-                double amount{};
-                Client recipient;
-                client->Transfer_To(amount, recipient);
+                admin->listEmployee();
                 break;
             }
+
             case 5:
             {
-                client->Check_Balance();
+                int id{};
+                string name, password;
+                double salary{};
+
+                cout << "Enter new name for the client: ";
+                cin >> name;
+
+                cout << "Enter new password for the client: ";
+                cin >> password;
+
+                cout << "Enter new balance for the client: ";
+                cin >> salary;
+
+                admin->editEmployee(id, name, password, salary);
+                cout << "Employee information updated successfully." << endl;
+
+                break;
             }
             default:
             {
