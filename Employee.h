@@ -201,10 +201,6 @@ public:
 			 << getPassword() << ", Salary : " << getSalary() << endl;
 	}
 
-	/*Person* display() {
-		return this;
-	};*/
-
 	~Employee()
 	{
 

@@ -71,11 +71,6 @@ public:
 			 << getPassword() << ", Balance : " << getBalance() << endl;
 	}
 
-
-	/*Person* display() {
-		return this;
-	};*/
-
 	~Client()
 	{
 
