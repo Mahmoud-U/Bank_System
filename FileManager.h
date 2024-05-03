@@ -74,5 +74,38 @@ public:
 	{
 		FilesHelper::clearFile("Admins.txt", "New Admin.txt");
 	}
-};
 
+						//IMPORTANT METHODS						
+
+	void getAllData()
+	{
+		getAllClients();
+		getAllEmployees();
+		getAllAdmins();
+	}
+
+	void updateClient() {
+		removeAllClients();
+		for (clientX = allClients.begin(); clientX != allClients.end(); clientX++)
+		{
+			addClient(*clientX);
+		}
+	}
+
+	void updateEmployee() {
+		removeAllEmployees();
+		for (employeeX = allEmployees.begin(); employeeX != allEmployees.end(); employeeX++)
+		{
+			addEmployee(*employeeX);
+		}
+	}
+
+	void updateAdmin() {
+		removeAllAdmins();
+		for (adminX = allAdmins.begin(); adminX != allAdmins.end(); adminX++)
+		{
+			addAdmin(*adminX);
+		}
+	}
+
+};
