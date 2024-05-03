@@ -16,15 +16,26 @@
 #include "Screens.h"
 using namespace std;
 
-//void clearScreen();
-//void showMenu();
-
 int main()
 {
-	Screens::runApp();
+	ClientManger c;
+	Client* aa = new Client;
+	c.updatePassword(aa);
+
+	//Screens::runApp();
 
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

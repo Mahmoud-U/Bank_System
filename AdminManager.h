@@ -51,7 +51,8 @@ public:
                 cout << "Employee Not Found \n";
             }
             else {
-                cout << "Employee Found \n";
+                cout << "Employee Found ";
+                admin->searchEmployee(id)->Display();
             }
         }
     }
@@ -77,7 +78,7 @@ public:
     {
         if (admin == nullptr)
         {
-            cout << "Invalid client." << endl;
+            cout << "Invalid Admin" << endl;
             return false;
         }
         else

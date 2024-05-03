@@ -77,30 +77,40 @@ public:
 		 }*/
 	 }
 
+	 static void clearScreen()
+	 {
+		 system("cls"); // Clear the console screen on Windows
+	 }
+
 	 static int loginAs() 
 	 {
-		 int choice;
-		 cout << "Enter your choice: ";
-		 cin >> choice;
-		 return choice;
+		 int c{};
+		 return c;
+
 	 }
 
 	 static void loginOptions() {
-		 char choice;
+		 char choice{};
 		 HANDLE col;
 		 col = GetStdHandle(STD_OUTPUT_HANDLE);
-		 
+		 int result{};
+
 		 do {
 			 	system("cls"); // Clear the screen
 				SetConsoleTextAttribute(col, 9);
 			 	cout << "Choose your role" << endl;
 				SetConsoleTextAttribute(col, 10);
 			 	cout << "1. Admin" << endl;
-					
+				result = 1;
+				result = loginAs();
 				SetConsoleTextAttribute(col, 11);
 			 	cout << "2. Employee" << endl;
+				result = 2;
+				result = loginAs();
 				SetConsoleTextAttribute(col, 13);
 			 	cout << "3. Client" << endl;
+				result = 3;
+				result = loginAs();
 				SetConsoleTextAttribute(col, 14);
 				cout << "0. Exit" << endl;
 				SetConsoleTextAttribute(col, 15);
@@ -109,75 +119,79 @@ public:
 			 
 			 	switch (choice) 
 				{
-			 	case '1':
+				case '1':
 				{
 					SetConsoleTextAttribute(col, 10);
-					cout << "You are an Admin" << std::endl;
+					clearScreen();
+					cout << "You are an Admin" << endl;
 					break;
 				}
-			 	case '2':
+				case '2':
 				{
 					SetConsoleTextAttribute(col, 11);
-					cout << "You are an Employee" << std::endl;
+					cout << "You are an Employee" << endl;
 					break;
 				}
-			 	case '3':
+				case '3':
 				{
 					SetConsoleTextAttribute(col, 13);
-					cout << "You are a client" << std::endl;
+					cout << "You are a client" << endl;
 					break;
 				}
 				case '0':
 				{
 					SetConsoleTextAttribute(col, 14);
-					cout << "Exitting" << std::endl;
+					cout << "Exitting" << endl;
 					break;
 				}
 			 	default:
-			 		cout << "Invalid choice. Please try again." << std::endl;
+			 		cout << "Invalid choice. Please try again." << endl;
 			 		break;
 			 	}
 			 
-			 	//_getch(); // Wait for user to press a key
+			 	_getch(); // Wait for user to press a key
 
-			 } while (choice != '0');
+		 } while (choice != '0');
 				system("cls");
 	 }
+
+	/* static int loginAs()
+	 {
+		 system("cls");
+
+	 }*/
 	
 
 	 static void loginScreen(int n) {
+		 n = loginAs();
 		 do {
-			 switch (n) {
-			 case '1':
+			 switch (loginAs()) {
+			 case 1:
 			 {
 				 AdminManager::printAdminMenu();
-				 Admin* a;
-				 AdminManager::adminOptions(a);
-				 int id{};
-				 string password;
-				 AdminManager::adminLogin(id, password);
 				 break;
 			 }
-			 case '2':
+			 case 2:
 			 {
 				 EmployeeManager::printEmployeeMenu();
-				 Employee* e;
-				 EmployeeManager::employeeOptions(e);
+				 
 				 break;
 			 }
-			 case '3':
-
+			 case 3:
+			 {
+				 ClientManger::printClientMenu();
 				 break;
-			 case '0':
-
-				 std::cout << "Exitting" << std::endl;
-
+			 }
+			 default:
+			 {
+				 cout << "Exitting" << endl;
 				 break;
+			 }
 
 			 }
 
 			 _getch(); // Wait for user to press a key
-		 } while (n != '0');
+		 } while (loginAs() != 0);
 	 system("cls");
 
 	 }
@@ -204,28 +218,12 @@ public:
 			 f.getAllAdmins();
 			 f.getAllEmployees();
 			 f.getAllClients();
-			 bankName();
-			 welcome();
-			 int choice = loginAs();
-
-			 if (choice >= 1 && choice <= 3) {
-				 loginScreen(choice);
-				 // Add logic for each user type after logging in
-				 // For example, call specific methods based on user type
-			 }
-			 else {
-				 invalid(choice);
-			 }
-
+			 //bankName();
+			 //welcome();
+			 loginOptions();
+			 //loginAs();
 			 logout();
 
-			 /*cout << "Do you want to logout? (y/n): ";
-			 char logoutChoice;
-			 cin >> logoutChoice;
-			 if (logoutChoice == 'y' || logoutChoice == 'Y') {
-				 logout();
-				 isRunning = false;
-			 }*/
 		 }
 	 }
 };

@@ -6,6 +6,7 @@
 using namespace std;
 class ClientManger
 {
+public:
     //Client Menu
     static void printClientMenu() {
         cout << "===== Client Menu ===== \n";
@@ -19,16 +20,28 @@ class ClientManger
     }
 
     //Update Password
-    static void updatePassword(Client* client) 
+    static void updatePassword(Person* person) 
     {
-        string newPassword;
+        int id{};
+        cout << "Enter an ID to search \n";
+        cin >> id;
 
-        cout << "Enter new password for " << client->getName() << ": ";
-        cin >> newPassword;
+        FileManager f;
+        f.getAllClients();
 
-        client->setPassword(newPassword);
+        if (clientX->getId() == id)
+        {
+            string password;
+            cout << "Enter new password: \n";
+            cin >> password;
 
-        cout << "Password updated successfully for " << client->getName() << endl;
+            person->setPassword(password);
+            cout << "Password updated successfully for \n";
+        }
+        else
+        {
+            cout << "Client Not Found \n";
+        }
     }
 
     //Client LogIn
@@ -86,6 +99,8 @@ class ClientManger
             case 4:
             {
                 double amount{};
+                cout << "Enter the amount \n";
+                cin >> amount;
                 client->Deposit(amount);
                 break;
             }
@@ -93,6 +108,8 @@ class ClientManger
             case 5:
             {
                 double amount{};
+                cout << "Enter the amount \n";
+                cin >> amount;
                 client->Withdraw(amount);
                 break;
             }
@@ -101,6 +118,9 @@ class ClientManger
             {
                 double amount{};
                 Client recipient;
+
+                cout << "Enter the amount \n";
+                cin >> amount;
 
                 client->Transfer_To(amount, recipient);
                 break;

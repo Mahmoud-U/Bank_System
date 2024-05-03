@@ -75,7 +75,8 @@ public:
 				cout << "Client Not Found \n";
 			}
 			else {
-				cout << "Client Found \n";
+				cout << "Client Found, ";
+				employee->searchClient(id)->Display();
 			}
 		}
 	}
@@ -101,7 +102,7 @@ public:
 			{
 				cout << "Client Not Found \n";
 			}
-			else 
+			else
 			{
 				int id{};
 				string name, password;
