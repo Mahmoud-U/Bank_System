@@ -3,7 +3,9 @@
 #include <string>
 #include <vector>
 
+#include "FilesHelper.h"
 #include "FileManager.h"
+#include "ClientManger.h"
 using namespace std;
 class EmployeeManager 
 {
@@ -12,12 +14,15 @@ public:
 	static void printEmployeeMenu()
 	{
 		cout << "===== Employee Menu ===== \n";
-		cout << "1. Employee Login \n";
-		cout << "2. My Information \n";
-		cout << "3. Add Client \n";
-		cout << "4. Search Client \n";
-		cout << "5. list Client \n";
-		cout << "6. Edit Client \n";
+		cout << "1. My Information \n";
+		cout << "2. Check Salary \n";
+		cout << "3. Edit Password \n";
+		cout << "4. Add New Client \n";
+		cout << "5. Search For A Client \n";
+		cout << "6. list All Clients \n";
+		cout << "7. Edit Client Information \n";
+		cout << "8. Back To Employee Menu \n";
+		cout << "9. Logout \n";
 	}
 
 	//Add New Client
@@ -30,10 +35,10 @@ public:
 		}
 		else
 		{
-			Client c;
-			employee->addClient(c);
+			Client client;
+			employee->addClient(client);
 			FileManager f;
-			f.addClient(c);
+			f.addClient(client);
 		}
 	}
 

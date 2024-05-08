@@ -193,6 +193,12 @@ public:
 		searchClient(id)->setBalance(balance);
 	}
 
+	// Check Salary
+	void Check_Balance()
+	{
+		cout << "Current Salary : " << salary << endl;
+	}
+
 	//Display
 	void Display()
 	{
