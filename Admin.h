@@ -93,6 +93,12 @@ public:
         searchEmployee(id)->setSalary(salary);
     }
 
+    // Check Salary
+    void Check_Salary()
+    {
+        cout << "Current Salary : " << salary << endl;
+    }
+
 	void Display()
 	{
         cout << "Admin Details : " << endl;

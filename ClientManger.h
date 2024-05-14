@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 
-#include "FilesHelper.h"
 #include "FileManager.h"
 using namespace std;
 class ClientManger
@@ -187,7 +186,4 @@ public:
             return true;
         }
     }
-
-
 };
-

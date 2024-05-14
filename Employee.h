@@ -6,9 +6,10 @@
 #include <exception>
 
 #include "Client.h"
+#include "Person.h"
 using namespace std;
 
-class Employee
+class Employee : public Person
 {
 protected:
 	int id;
@@ -194,7 +195,7 @@ public:
 	}
 
 	// Check Salary
-	void Check_Balance()
+	void Check_Salary()
 	{
 		cout << "Current Salary : " << salary << endl;
 	}
