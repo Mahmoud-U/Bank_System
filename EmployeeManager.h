@@ -39,6 +39,7 @@ public:
 			employee->addClient(client);
 			FileManager f;
 			f.addClient(client);
+			cout << "\nClient is Added Successfully \n";
 		}
 	}
 
